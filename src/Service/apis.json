@@ -29,7 +29,10 @@
     "submenunav":"/Api/TopMenu/SubMenu",
     "homepage":"/api/Homemaster",
     "homepagebyid":"/api/Homemaster/",
-    "report":"/api/Reports",
-    "tender":"/api/Tenders",
-    "Links":"/api/Link"
+    "Links":"/api/Link",
+    "Linksbyid":"/api/Link/",
+    "Tender":"/api/Tenders",
+    "Tenderbyid":"/api/Tenders/",
+    "Report":"/api/Reports",
+    "Reportbyid":"/api/Reports/"
 }

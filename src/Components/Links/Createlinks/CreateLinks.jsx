@@ -34,7 +34,7 @@ export const Createlink = () => {
   }, []);
 
   const [formData, setFormData] = useState({
-    news_title: '',
+    Link_tittle: '',
     contenttype: '',
     external_file: '',
     internale_file: '',
@@ -54,7 +54,7 @@ export const Createlink = () => {
 
   useEffect(() => {
     setFormData({
-      news_title: '',
+      Link_tittle: '',
       contenttype: '',
       external_file: '',
       internale_file: '',
@@ -72,7 +72,7 @@ export const Createlink = () => {
   const validateForm = () => {
     const errors = {};
 
-    if (!formData.news_title) {
+    if (!formData.Link_tittle) {
       errors.name = 'Please enter your name';
     } else if (!/^[A-Za-z ]+$/.test(formData.name)) {
       errors.name = 'Please input alphabet characters only';
@@ -144,7 +144,7 @@ export const Createlink = () => {
     if (validateForm()) {
       try {
         const formDataToSend = new FormData();
-        formDataToSend.append('news_title', formData.news_title);
+        formDataToSend.append('Link_tittle', formData.Link_tittle);
         formDataToSend.append('contenttype', formData.contenttype);
 
         if (formData.contenttype === '4') {
@@ -160,14 +160,14 @@ export const Createlink = () => {
         formDataToSend.append('startdate', formData.startdate);
         formDataToSend.append('end_date', formData.end_date);
 
-        const response = await apiClient.post(apis.whatsnew, formDataToSend, {
+        const response = await apiClient.post(apis.Links, formDataToSend, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
         console.log('Data saved:', response.data);
         setFormData({
-          news_title: '',
+          Link_tittle: '',
           contenttype: '',
           external_file: '',
           internale_file: '',
@@ -237,11 +237,11 @@ export const Createlink = () => {
                 className="form-control"
                 type="text"
                 placeholder="Name"
-                name="news_title"
-                value={formData.news_title}
+                name="Link_tittle"
+                value={formData.Link_tittle}
                 onChange={handleInputChange}
               />
-              {errors.name && <div className="text-danger">{errors.news_title}</div>}
+              {errors.name && <div className="text-danger">{errors.Link_tittle}</div>}
             </div>
             <div className="mb-3">
               <label className="form-label text-dark">Select a content type</label>

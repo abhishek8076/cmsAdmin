@@ -21,7 +21,7 @@ import { CreateFooterData } from './Components/CMSFooter/CreateFooter/CreateFoot
 import { Profile } from './pages/Profile/Profile';
 import { Slider } from './Components/Slider/Slider';
 import { CreateReports } from './Components/Reports/CreateReports/CreateReports';
-import { Createtender } from './Components/Tender/CreateTender/Createtender';
+import { CreateTender, Createtender } from './Components/Tender/CreateTender/Createtender';
 import { Createlink } from './Components/Links/Createlinks/CreateLinks';
 import FooterTable  from './Components/CMSFooter/FooterTable/FooterTable';
 import { IndexEditFooter } from './Components/CMSFooter/EditFooter/IndexEditFooter';
@@ -30,6 +30,12 @@ import WhatsNewTable from './Components/WhatsNew/WhtasNewTable/WhatsNewTable';
 import { EditWhatsNew } from './Components/WhatsNew/EditWhatsNew/EditWhatsNew';
 import MenuSubMenuTable from './Components/CMS/MenuSubMenuTable/MenuSubMenuTable';
 import { Index } from './Components/CMS/EditMenuSubmeu/IndexEdit';
+import LinkTable from './Components/Links/Linktable/LinkTable';
+import { Editlink } from './Components/Links/Editlinks/Editlinks';
+import ReportTable from './Components/Reports/ReportTable/ReportTable';
+import { EditReport } from './Components/Reports/EditReport/EditReport';
+import TenderTable from './Components/Tender/TenderTable/TenderTable';
+import { EditTender } from './Components/Tender/EditTender/EditTender';
 
 export function App() {
   return (
@@ -59,15 +65,29 @@ export function App() {
           </Route>
           {/* Services */}
           <Route path="/services">
-            
+            {/* whats New */}
             <Route path='allwhatsnew'  element={<WhatsNewTable/>}/>
               <Route path='addwhatsnew' element={<CreateWhatsNew/>}/>
               <Route path='editwhatsnew/:id' element={<EditWhatsNew/>}/>
 
-         
-            <Route path='creatrereport' element={<CreateReports/>}/>
-            <Route path='createtender' element={<Createtender/>}/>
-            <Route path='createlinks' element={<Createlink/>}/>
+         {/* Links */}
+         <Route path='alllink'  element={<LinkTable/>}/>
+              <Route path='createlinks' element={<Createlink/>}/>
+              <Route path='editlink/:id' element={<Editlink/>}/>
+
+              {/* Report */}
+              <Route path='allreport'  element={<ReportTable/>}/>
+              <Route path='createreport' element={<CreateReports/>}/>
+              <Route path='editreport/:id' element={<EditReport/>}/>
+              
+
+              {/* Tender */}
+              <Route path='alltender'  element={<TenderTable/>}/>
+              <Route path='createtender' element={<CreateTender/>}/>
+              <Route path='edittender/:id' element={<EditTender/>}/>
+
+
+        
           </Route>
 
           {/* Footer */}

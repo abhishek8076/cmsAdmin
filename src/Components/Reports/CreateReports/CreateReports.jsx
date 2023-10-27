@@ -160,7 +160,7 @@ export const CreateReports = () => {
         formDataToSend.append('startdate', formData.startdate);
         formDataToSend.append('end_date', formData.end_date);
 
-        const response = await apiClient.post(apis.whatsnew, formDataToSend, {
+        const response = await apiClient.post(apis.Report, formDataToSend, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

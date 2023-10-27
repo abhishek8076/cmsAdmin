@@ -122,12 +122,12 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to='/services/creatrereport' >
+            <Link to='/services/allreport' >
               <i class="bi bi-circle"></i><span>Create Report</span>
             </Link>
           </li>
           <li>
-            <Link to='/services/createlinks' >
+            <Link to='/services/alllink' >
               <i class="bi bi-circle"></i><span>Create Links</span>
             </Link>
           </li>

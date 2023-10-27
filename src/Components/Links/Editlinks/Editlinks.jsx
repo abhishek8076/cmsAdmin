@@ -12,7 +12,7 @@ import apis from '../../../Service/apis.json';
 import Header from '../../header/Header';
 import Sidebar from '../../sidebar/Sidebar';
 
-export const EditReport = () => {
+export const Editlink = () => {
   const { id } = useParams();
   const [html, sethtml] = useState('');
   const [file, setFile] = useState(null);
@@ -22,7 +22,7 @@ export const EditReport = () => {
   const [prevContentType, setPrevContentType] = useState('');
 
   const [formData, setFormData] = useState({
-    report_tittle: '',  // Corrected typo in the field name
+    link_tittle: '',  // Corrected typo in the field name
     contenttype: '',
     external_file: '',
     internal_file: '',  // Corrected field name
@@ -54,7 +54,7 @@ export const EditReport = () => {
 
   useEffect(() => {
     if (id) {
-      apiClient.get(apis.Reportbyid + id)
+      apiClient.get(apis.Linksbyid + id)
         .then((response) => {
           setFormData(response.data)
 
@@ -64,8 +64,8 @@ export const EditReport = () => {
         });
     } else {
       setFormData({
-        report_tittle: '',
-        contenttype: 0,
+        link_tittle: '',
+        contenttype: "",
         external_file: '',
         internal_file: '',
         file: null,
@@ -99,8 +99,8 @@ export const EditReport = () => {
   const validateForm = () => {
     const errors = {};
 
-    if (!formData.report_tittle) {
-      errors.report_tittle = 'Name is required';
+    if (!formData.link_tittle) {
+      errors.link_tittle = 'Name is required';
     }
 
     if (!formData.contenttype) {
@@ -191,7 +191,7 @@ export const EditReport = () => {
   //   if (validateForm()) {
   //     try {
   //       const formDataToSend = new FormData();
-  //       formDataToSend.append('report_tittle', formData.report_tittle);
+  //       formDataToSend.append('link_tittle', formData.link_tittle);
   //       formDataToSend.append('contenttype', formData.contenttype);
 
   //       if (formData.contenttype === 4) {
@@ -225,7 +225,7 @@ export const EditReport = () => {
     if (validateForm()) {
       try {
         const formDataToSend = new FormData();
-        formDataToSend.append('report_tittle', formData.report_tittle);
+        formDataToSend.append('link_tittle', formData.link_tittle);
         formDataToSend.append('contenttype', formData.contenttype);
 
         if (formData.contenttype === 4) {
@@ -241,7 +241,7 @@ export const EditReport = () => {
         formDataToSend.append('startdate', formData.startdate);
         formDataToSend.append('end_date', formData.end_date);
 
-        const response = await apiClient.put(apis.Reportbyid + id, formDataToSend, {
+        const response = await apiClient.put(apis.Linksbyid + id, formDataToSend, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -263,11 +263,11 @@ export const EditReport = () => {
         <Sidebar />
       <main id="main" class="main">
         <div class="pagetitle">
-          <h1>Edit Report</h1>
+          <h1>Edit Link</h1>
           <nav>
             <ol class="breadcrumb">
               <li class="breadcrumb-item">Home</li>
-              <li class="breadcrumb-item">Edit Report</li>
+              <li class="breadcrumb-item">Edit Link</li>
             </ol>
           </nav>
         </div>
@@ -286,18 +286,18 @@ export const EditReport = () => {
           <div className="row justify-content-center">
             <div className="col-md-6">
               <div class="box-sec">
-                <h1 className="text-center heading-main">Report</h1>
+                <h1 className="text-center heading-main">Link</h1>
                 <div className="mb-3">
                   <label className="form-label text-dark">Name</label>
                   <input
                     className="form-control"
                     type="text"
                     placeholder="Name"
-                    name="report_tittle"
-                    value={formData.report_tittle}
+                    name="link_tittle"
+                    value={formData.link_tittle}
                     onChange={handleInputChange}
                   />
-                  {errors.report_tittle && <div className="text-danger">{errors.report_tittle}</div>}
+                  {errors.link_tittle && <div className="text-danger">{errors.link_tittle}</div>}
                 </div>
 
                 <div className="mb-3">

@@ -13,7 +13,7 @@ import Header from "../../header/Header";
 import Footer from "../../footer/Footer";
 import Sidebar from "../../sidebar/Sidebar";
 
-export const Createtender = () => {
+export const CreateTender = () => {
   const [html, sethtml] = useState('');
   const [file, setselectefile] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -160,7 +160,7 @@ export const Createtender = () => {
         formDataToSend.append('startdate', formData.startdate);
         formDataToSend.append('end_date', formData.end_date);
 
-        const response = await apiClient.post(apis.whatsnew, formDataToSend, {
+        const response = await apiClient.post(apis.Tender, formDataToSend, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

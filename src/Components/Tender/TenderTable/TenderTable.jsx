@@ -18,9 +18,9 @@ import apiClient from '../../../Service/ApiClient';
 import api from '../../../Service/apis.json';
 import Footer from '../../footer/Footer';
 import AddIcon from '@mui/icons-material/Add';
-import './ReportTable.scss'
+import './TenderTable.scss'
 
-export default function ReportTable() {
+export default function TenderTable() {
     const [apiData, setApiData] = useState([]);
     const [isDeleting, setIsDeleting] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
@@ -31,7 +31,7 @@ export default function ReportTable() {
     const columns = [
         { field: "rowIndex", headerName: "S.No", width: 50 }
        ,
-        { field: "u_report_tittle", headerName: "Title" ,width: 200},
+        { field: "u_news_tittle", headerName: "Title" ,width: 200},
         { field: "u_startdate", headerName: "Start Date",width: 120 },
         { field: "u_end_date", headerName: "End date",width: 120 },
         { field: "u_file ", headerName: "File",width: 200 },
@@ -40,7 +40,7 @@ export default function ReportTable() {
             headerName: "Edit",
             sortable: false,
             renderCell: (params) => (
-                <Link to={'/services/editreport/'+params.row.u_id}>
+                <Link to={'/services/edittender/'+params.row.u_id}>
                     <EditIcon style={{ cursor: 'pointer' }} />
                 </Link>
             ),
@@ -65,7 +65,7 @@ export default function ReportTable() {
 
     const handleConfirmSubmit = async () => {
         try {
-            await apiClient.delete(api.Reportbyid  + selectedItem.u_id);
+            await apiClient.delete(api.getwhatsnewbyid  + selectedItem.u_id);
             setApiData((prevData) => prevData.filter((item) => item.u_id !== selectedItem.u_id));
             setIsDeleting(false);
             setModalMessage('Data deleted successfully');
@@ -84,7 +84,7 @@ export default function ReportTable() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await apiClient.get(api.Report);
+                const response = await apiClient.get(api.whatsnew);
                 const dataWithIds = response.data.map((row, index) => ({ id: index, ...row }));
                 setApiData(dataWithIds);
             } catch (error) {
@@ -101,12 +101,12 @@ export default function ReportTable() {
             <Sidebar />
             <main id="main" className="main">
                 <div className="pagetitle">
-                    <h1 className='maintitle'>All Report</h1>
+                    <h1 className='maintitle'>All Tender</h1>
                     <nav>
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">Home</li>
                             <li className="breadcrumb-item">Service</li>
-                            <li className="breadcrumb-item active">All Report </li>
+                            <li className="breadcrumb-item active">All Tender </li>
                         </ol>
                     </nav>
                 </div>
@@ -115,8 +115,8 @@ export default function ReportTable() {
                 <h1 className="maintitle">Table</h1>
                 </div>
                 <div className="header-box-rgt">
-                    <Link to='/services/createreport'>
-                    <p><AddIcon/> New Report</p>
+                    <Link to='/services/createtender'>
+                    <p><AddIcon/>New Tender</p>
                     </Link>
                 </div>
                 </div>
