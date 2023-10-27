@@ -62,8 +62,8 @@ export default function AllUser() {
 
     const handleConfirmSubmit = async () => {
         try {
-            await apiClient.delete(api.deleteuser  + selectedItem.u_id);
-            setApiData((prevData) => prevData.filter((item) => item.users_id !== selectedItem.u_id));
+            await apiClient.delete(api.deleteuser  + selectedItem.users_id);
+            setApiData((prevData) => prevData.filter((item) => item.users_id !== selectedItem.users_id));
             setIsDeleting(false);
             setModalMessage('Data deleted successfully');
             setSnackbarOpen(true);
