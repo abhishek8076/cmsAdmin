@@ -59,6 +59,7 @@ export const CreateMenu = () => {
     submenu_id: 0,
     file: '',
     html: '',
+    languagetype:'',
   });
 
   const [errors, setErrors] = useState({});
@@ -73,6 +74,7 @@ export const CreateMenu = () => {
       submenu_id: 0,
       file: '',
       html: '',
+      languagetype:'',
     });
   }, []);
 
@@ -89,6 +91,9 @@ export const CreateMenu = () => {
 
     if (!formData.ContentType) {
       newErrors.ContentType = 'Select a content type';
+    }
+    if (!formData.languagetype) {
+      newErrors.languagetype = 'Select a Language';
     }
 
     if (formData.ContentType === '4' && !formData.external_link) {
@@ -152,6 +157,7 @@ export const CreateMenu = () => {
       formDataToSend.append('ContentType', formData.ContentType);
       formDataToSend.append('MenuUrl', formData.MenuUrl);
       formDataToSend.append('submenu_id', formData.submenu_id);
+      formDataToSend.append('languagetype', formData.languagetype);
 
       if (formData.ContentType === '4') {
         formDataToSend.append('external_link', formData.external_link);
@@ -222,6 +228,20 @@ export const CreateMenu = () => {
             <div class="mb-3 mt-md-4">
               <div class="box-sec">
                 <h1 className="text-center text-dark heading-main">Menu</h1>
+                <div className="mb-3">
+                  <label className="form-label text-dark">Select a Language</label>
+                  <select
+                    className="form-select"
+                    name="languagetype"
+                    value={formData.languagetype}
+                    onChange={handleInputChange}
+                  >
+                    <option value="0">Select a Language</option>
+                    <option value="1">English</option>
+                    <option value="2">Hindi</option>
+                  </select>
+                  {errors.languagetype && <div className="text-danger">{errors.languagetype}</div>}
+                </div>
                 {/* Input for Name */}
                 <div className="mb-3">
                   <label className="form-label text-dark">Name</label>
