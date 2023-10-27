@@ -34,7 +34,7 @@ export const CreateTender = () => {
   }, []);
 
   const [formData, setFormData] = useState({
-    news_title: '',
+    ender_tittle: '',
     contenttype: '',
     external_file: '',
     internale_file: '',
@@ -54,7 +54,7 @@ export const CreateTender = () => {
 
   useEffect(() => {
     setFormData({
-      news_title: '',
+      ender_tittle: '',
       contenttype: '',
       external_file: '',
       internale_file: '',
@@ -72,7 +72,7 @@ export const CreateTender = () => {
   const validateForm = () => {
     const errors = {};
 
-    if (!formData.news_title) {
+    if (!formData.ender_tittle) {
       errors.name = 'Please enter your name';
     } else if (!/^[A-Za-z ]+$/.test(formData.name)) {
       errors.name = 'Please input alphabet characters only';
@@ -144,7 +144,7 @@ export const CreateTender = () => {
     if (validateForm()) {
       try {
         const formDataToSend = new FormData();
-        formDataToSend.append('news_title', formData.news_title);
+        formDataToSend.append('ender_tittle', formData.ender_tittle);
         formDataToSend.append('contenttype', formData.contenttype);
 
         if (formData.contenttype === '4') {
@@ -167,7 +167,7 @@ export const CreateTender = () => {
         });
         console.log('Data saved:', response.data);
         setFormData({
-          news_title: '',
+          ender_tittle: '',
           contenttype: '',
           external_file: '',
           internale_file: '',
@@ -237,11 +237,11 @@ export const CreateTender = () => {
                 className="form-control"
                 type="text"
                 placeholder="Name"
-                name="news_title"
-                value={formData.news_title}
+                name="ender_tittle"
+                value={formData.ender_tittle}
                 onChange={handleInputChange}
               />
-              {errors.name && <div className="text-danger">{errors.news_title}</div>}
+              {errors.name && <div className="text-danger">{errors.ender_tittle}</div>}
             </div>
             <div className="mb-3">
               <label className="form-label text-dark">Select a content type</label>
