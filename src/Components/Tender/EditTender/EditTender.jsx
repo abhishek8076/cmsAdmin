@@ -22,7 +22,7 @@ export const EditTender = () => {
   const [prevContentType, setPrevContentType] = useState('');
 
   const [formData, setFormData] = useState({
-    news_tittle: '',  // Corrected typo in the field name
+    tender_tittle: '',  // Corrected typo in the field name
     contenttype: '',
     external_file: '',
     internal_file: '',  // Corrected field name
@@ -64,7 +64,7 @@ export const EditTender = () => {
         });
     } else {
       setFormData({
-        news_tittle: '',
+        tender_tittle: '',
         contenttype: 0,
         external_file: '',
         internal_file: '',
@@ -99,8 +99,8 @@ export const EditTender = () => {
   const validateForm = () => {
     const errors = {};
 
-    if (!formData.news_tittle) {
-      errors.news_tittle = 'Name is required';
+    if (!formData.tender_tittle) {
+      errors.tender_tittle = 'Name is required';
     }
 
     if (!formData.contenttype) {
@@ -191,7 +191,7 @@ export const EditTender = () => {
   //   if (validateForm()) {
   //     try {
   //       const formDataToSend = new FormData();
-  //       formDataToSend.append('news_tittle', formData.news_tittle);
+  //       formDataToSend.append('tender_tittle', formData.tender_tittle);
   //       formDataToSend.append('contenttype', formData.contenttype);
 
   //       if (formData.contenttype === 4) {
@@ -225,7 +225,7 @@ export const EditTender = () => {
     if (validateForm()) {
       try {
         const formDataToSend = new FormData();
-        formDataToSend.append('news_tittle', formData.news_tittle);
+        formDataToSend.append('tender_tittle', formData.tender_tittle);
         formDataToSend.append('contenttype', formData.contenttype);
 
         if (formData.contenttype === 4) {
@@ -293,11 +293,11 @@ export const EditTender = () => {
                     className="form-control"
                     type="text"
                     placeholder="Name"
-                    name="news_tittle"
-                    value={formData.news_tittle}
+                    name="tender_tittle"
+                    value={formData.tender_tittle}
                     onChange={handleInputChange}
                   />
-                  {errors.news_tittle && <div className="text-danger">{errors.news_tittle}</div>}
+                  {errors.tender_tittle && <div className="text-danger">{errors.tender_tittle}</div>}
                 </div>
 
                 <div className="mb-3">

@@ -117,7 +117,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to='/services/createtender' >
+            <Link to='/services/alltender' >
               <i class="bi bi-circle"></i><span>Create Tender</span>
             </Link>
           </li>
