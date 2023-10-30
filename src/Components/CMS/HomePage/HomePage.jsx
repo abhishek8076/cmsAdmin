@@ -139,8 +139,9 @@ export const HomePage = () => {
       </div>
       </div>
       </div>
-      <Footer/>
+     
       </main>
+       <Footer/>
       </div>   
       
        </div>

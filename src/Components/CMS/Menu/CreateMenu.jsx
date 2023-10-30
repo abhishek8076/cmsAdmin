@@ -206,6 +206,7 @@ export const CreateMenu = () => {
         <main id="main" class="main">
 
 <div class="pagetitle">
+<div class="pagetitle-lft">
   <h1>Create Menu</h1>
   <nav>
     <ol class="breadcrumb">
@@ -215,6 +216,8 @@ export const CreateMenu = () => {
      
     </ol>
   </nav>
+  </div>
+  <div class="pagetitle-rgt"><button type="button" class="btn btn-info">Back</button></div>
 </div>
 
 
@@ -342,9 +345,7 @@ export const CreateMenu = () => {
                   </div>
                 )}
               </div>
-              </div>
-              </div>
-            </div>
+              
             {/* Submit Button */}
             <div className="btnsubmit">
               <button className="btn btn-primary" onClick={handleOpenConfirmation}>
@@ -383,6 +384,9 @@ export const CreateMenu = () => {
                   Data Save successfully.
                 </Alert>
               </Snackbar>
+            </div>
+            </div>
+              </div>
             </div>
           </div>
         </div>

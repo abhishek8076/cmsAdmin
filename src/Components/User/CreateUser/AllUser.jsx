@@ -17,6 +17,7 @@ import MuiAlert from '@mui/material/Alert';
 import apiClient from '../../../Service/ApiClient';
 import api from '../../../Service/apis.json';
 import './AllUser.scss';
+import Footer from '../../footer/Footer';
 
 export default function AllUser() {
     const [apiData, setApiData] = useState([]);
@@ -131,6 +132,7 @@ export default function AllUser() {
                     />
                 </Box>
             </main>
+            <Footer />
             <Dialog open={confirmDialogOpen} onClose={handleCloseConfirmation}>
                 <DialogTitle>Confirm Delete</DialogTitle>
                 <DialogContent>

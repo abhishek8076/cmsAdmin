@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     
   
-    <footer id="footer1" class="footer">
+    <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span> Ornate TechnoServices Pvt. Ltd </span></strong>. All Rights Reserved
     </div>
