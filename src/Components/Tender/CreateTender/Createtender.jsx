@@ -213,6 +213,7 @@ export const CreateTender = () => {
         <Sidebar />
       <main id="main" class="main">
         <div class="pagetitle">
+        <div class="pagetitle-lft">
           <h1>Create Tender</h1>
           <nav>
             <ol class="breadcrumb">
@@ -221,6 +222,14 @@ export const CreateTender = () => {
               <li class="breadcrumb-item active">Create Tender</li>
             </ol>
           </nav>
+</div>
+<div class="pagetitle-rgt">
+      <Link to='/dashboard'>
+              <button type="button" class="btn btn-info">
+                Back
+              </button>
+            </Link>
+          </div>
         </div>
     <div className="container">
       <div className="row">

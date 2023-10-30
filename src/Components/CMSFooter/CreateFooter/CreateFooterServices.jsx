@@ -150,11 +150,11 @@ export const CreateFooterService = () => {
       </nav>
       </div>
       <div class="pagetitle-rgt">
-            <a href="/dashboard">
+      <Link to='/dashboard'>
               <button type="button" class="btn btn-info">
                 Back
               </button>
-            </a>
+            </Link>
           </div>
     </div>
     <div className="container">
