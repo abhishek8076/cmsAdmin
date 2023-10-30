@@ -150,140 +150,201 @@ export const CreateUser=()=> {
   return (
     <>
       <div>
-<main id="main" class="main">
-<div class="pagetitle">
-  <h1>Create User</h1>
-  <nav>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">Dashboard</li>
-      <li class="breadcrumb-item ">User</li>
-      <li class="breadcrumb-item active"> Create User</li>
-    </ol>
-  </nav>
-</div>
-        <div className="home">
-          <Header/>
-          <Sidebar/>
-          <div className="homeContainer">
-           
-            <div className='bgimg'>
-              <Container>
-                <Row className="vh-100 d-flex justify-content-center align-items-left">
-                  <Col md={10} lg={12} xs={12}>
-                    <Card>
-                      <Card.Body>
-                        <div className="mb-3 mt-md-4">
-                          <h2 className="fw-bold mb-4 text-center text-uppercase">
-                           Create User 
-                          </h2>
-                          <div className="mb-3">
-                            <Form onSubmit={handleSubmit}>
-                              <Form.Group className="mb-3" controlId="Name">
-                                <Form.Label className="text-center" style={{ color: "black" }}>Name</Form.Label>
-                                <Form.Control
-                                  type="text"
-                                  placeholder="Enter Name"
-                                  name="name"
-                                  value={formData.name}
-                                  onChange={handleChange}
-                                  isInvalid={!!formErrors.name}
-                                  maxLength={15}
-                                />
-                                <Form.Control.Feedback type="invalid">
-                                  {formErrors.name}
-                                </Form.Control.Feedback>
-                              </Form.Group>
-                              <Form.Group className="mb-3" controlId="Email">
-                                <Form.Label className="text-center" style={{ color: "black" }}>E-mail</Form.Label>
-                                <Form.Control
-                                  type="text"
-                                  placeholder="Enter Email"
-                                  name="email"
-                                  value={formData.email}
-                                  onChange={handleChange}
-                                  isInvalid={!!formErrors.email}
-                                />
-                                <Form.Control.Feedback type="invalid">
-                                  {formErrors.email}
-                                </Form.Control.Feedback>
-                              </Form.Group>
-                              <Form.Group className="mb-3" controlId="MobileNo">
-                                <Form.Label className="text-center" style={{ color: "black" }}>Mobile No.</Form.Label>
-                                <Form.Control
-                                  type="text"
-                                  placeholder="Enter Mobile No."
-                                  name="mobile_no"
-                                  value={formData.mobile_no}
-                                  onChange={handleChange}
-                                  isInvalid={!!formErrors.mobile_no}
-                                  maxLength={10}
-                                />
-                                <Form.Control.Feedback type="invalid">
-                                  {formErrors.mobile_no}
-                                </Form.Control.Feedback>
-                              </Form.Group>
-                              <Form.Group className="mb-3" controlId="Address">
-                                <Form.Label className="text-center" style={{ color: "black" }}>Address</Form.Label>
-                                <Form.Control
-                                  type="text"
-                                  placeholder="Enter your address"
-                                  name="address"
-                                  value={formData.address}
-                                  onChange={handleChange}
-                                  isInvalid={!!formErrors.address}
-                                  maxLength={30}
-                                />
-                                <Form.Control.Feedback type="invalid">
-                                  {formErrors.address}
-                                </Form.Control.Feedback>
-                              </Form.Group>
-
-                              <Form.Group className="mb-3" controlId="Usertype">
-                                <div className="mb-12">
-                                  <Form.Label className="text-center" style={{ color: "black" }}>Role</Form.Label>
-                                  <select
-                                    className='form-control'
-                                    name='usertype'
-                                    value={selectedRole}
-                                    onChange={handleChange}
-                                    isInvalid={!!formErrors.usertype}
-                                  >
-                                    <option value='' style={{ color: "black" }}>Select a role</option>
-                                    {dropdownOptions.map((data) => (
-                                      <option key={data.users_id} value={data.users_id}>
-                                        {data.user_name}
-                                      </option>
-                                    ))}
-                                  </select>
-                                  <Form.Control.Feedback type="invalid">
-                                    {formErrors.usertype}
-                                  </Form.Control.Feedback>
-                                </div>
-                              </Form.Group>
-
-                              <div id="button" className="d-flex " style={{ justifyContent: "space-between" }}>
-                                <Button variant="primary" type="submit" style={{ width: 100 }}>
-                                  Submit
-                                </Button>
-                                
-                              </div>
-
-                              <Dialog className="backdrop" open={confirmDialogOpen} onClick={handleDeleteCancel}>
-                                <Spinner animation="border" role="status">
-                                  <span className="visually-hidden">Loading...</span>
-                                </Spinner>
-                              </Dialog>
-                            </Form>
-                          </div>
-                        </div>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                </Row>
-              </Container>
+        <main id="main" class="main">
+          <div class="pagetitle">
+            <div className="pagetitle-lft">
+              <h1>Create User</h1>
+              <nav>
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item">Dashboard</li>
+                  <li class="breadcrumb-item ">User</li>
+                  <li class="breadcrumb-item active"> Create User</li>
+                </ol>
+              </nav>
+            </div>
+            <div className="pagetitle-rgt">
+              <button type="button" class="btn btn-info">
+                Back
+              </button>
             </div>
           </div>
-        </div>
+          <div className="home">
+            <Header />
+            <Sidebar />
+            <div className="homeContainer">
+              <div className="bgimg">
+                <Container>
+                  <Row className="vh-100 d-flex justify-content-center align-items-left">
+                    <Col md={10} lg={12} xs={12}>
+                      <Card>
+                        <Card.Body>
+                          <div className="mb-3 mt-md-4">
+                            <h2 className="fw-bold mb-4 text-center text-uppercase">
+                              Create User
+                            </h2>
+                            <div className="mb-3">
+                              <Form onSubmit={handleSubmit}>
+                                <Form.Group className="mb-3" controlId="Name">
+                                  <Form.Label
+                                    className="text-center"
+                                    style={{ color: "black" }}
+                                  >
+                                    Name
+                                  </Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    placeholder="Enter Name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    isInvalid={!!formErrors.name}
+                                    maxLength={15}
+                                  />
+                                  <Form.Control.Feedback type="invalid">
+                                    {formErrors.name}
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="Email">
+                                  <Form.Label
+                                    className="text-center"
+                                    style={{ color: "black" }}
+                                  >
+                                    E-mail
+                                  </Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    placeholder="Enter Email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    isInvalid={!!formErrors.email}
+                                  />
+                                  <Form.Control.Feedback type="invalid">
+                                    {formErrors.email}
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+                                <Form.Group
+                                  className="mb-3"
+                                  controlId="MobileNo"
+                                >
+                                  <Form.Label
+                                    className="text-center"
+                                    style={{ color: "black" }}
+                                  >
+                                    Mobile No.
+                                  </Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    placeholder="Enter Mobile No."
+                                    name="mobile_no"
+                                    value={formData.mobile_no}
+                                    onChange={handleChange}
+                                    isInvalid={!!formErrors.mobile_no}
+                                    maxLength={10}
+                                  />
+                                  <Form.Control.Feedback type="invalid">
+                                    {formErrors.mobile_no}
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+                                <Form.Group
+                                  className="mb-3"
+                                  controlId="Address"
+                                >
+                                  <Form.Label
+                                    className="text-center"
+                                    style={{ color: "black" }}
+                                  >
+                                    Address
+                                  </Form.Label>
+                                  <Form.Control
+                                    type="text"
+                                    placeholder="Enter your address"
+                                    name="address"
+                                    value={formData.address}
+                                    onChange={handleChange}
+                                    isInvalid={!!formErrors.address}
+                                    maxLength={30}
+                                  />
+                                  <Form.Control.Feedback type="invalid">
+                                    {formErrors.address}
+                                  </Form.Control.Feedback>
+                                </Form.Group>
+
+                                <Form.Group
+                                  className="mb-3"
+                                  controlId="Usertype"
+                                >
+                                  <div className="mb-12">
+                                    <Form.Label
+                                      className="text-center"
+                                      style={{ color: "black" }}
+                                    >
+                                      Role
+                                    </Form.Label>
+                                    <select
+                                      className="form-control"
+                                      name="usertype"
+                                      value={selectedRole}
+                                      onChange={handleChange}
+                                      isInvalid={!!formErrors.usertype}
+                                    >
+                                      <option
+                                        value=""
+                                        style={{ color: "black" }}
+                                      >
+                                        Select a role
+                                      </option>
+                                      {dropdownOptions.map((data) => (
+                                        <option
+                                          key={data.users_id}
+                                          value={data.users_id}
+                                        >
+                                          {data.user_name}
+                                        </option>
+                                      ))}
+                                    </select>
+                                    <Form.Control.Feedback type="invalid">
+                                      {formErrors.usertype}
+                                    </Form.Control.Feedback>
+                                  </div>
+                                </Form.Group>
+
+                                <div
+                                  id="button"
+                                  className="d-flex "
+                                  style={{ justifyContent: "space-between" }}
+                                >
+                                  <Button
+                                    variant="primary"
+                                    type="submit"
+                                    style={{ width: 100 }}
+                                  >
+                                    Submit
+                                  </Button>
+                                </div>
+
+                                <Dialog
+                                  className="backdrop"
+                                  open={confirmDialogOpen}
+                                  onClick={handleDeleteCancel}
+                                >
+                                  <Spinner animation="border" role="status">
+                                    <span className="visually-hidden">
+                                      Loading...
+                                    </span>
+                                  </Spinner>
+                                </Dialog>
+                              </Form>
+                            </div>
+                          </div>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+            </div>
+          </div>
         </main>
       </div>
 
@@ -309,16 +370,14 @@ export const CreateUser=()=> {
         onClose={() => setSuccessDialogOpen(false)}
       >
         <DialogTitle>Success</DialogTitle>
-        <DialogContent>
-          User created successfully!
-        </DialogContent>
+        <DialogContent>User created successfully!</DialogContent>
         <DialogActions>
           <Button onClick={() => setSuccessDialogOpen(false)} color="primary">
             OK
           </Button>
         </DialogActions>
       </Dialog>
-      <Footer/>
+      <Footer />
     </>
   );
 }
