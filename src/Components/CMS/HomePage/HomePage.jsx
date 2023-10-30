@@ -98,8 +98,12 @@ export const HomePage = () => {
   </nav>
   </div>
   <div className="pagetitle-rgt">
-       <button type="button" class="btn btn-info">Back</button>
-  </div>
+              <Link to ="/dashboard">
+              <button type="button" class="btn btn-info">
+                Back
+              </button>
+              </Link>
+            </div>
 </div>
 <div class="row justify-content-center"><div class="card"><div class="card-body"><div class="mb-3 mt-md-4">
       <div className="box-sec">

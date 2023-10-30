@@ -111,7 +111,13 @@ export default function MenuSubMenuTable() {
                         </ol>
                     </nav>
 </div>
-<div class="pagetitle-rgt"><button type="button" class="btn btn-info">Back</button></div>
+<div className="pagetitle-rgt">
+              <Link to ="/dashboard">
+              <button type="button" class="btn btn-info">
+                Back
+              </button>
+              </Link>
+            </div>
                 </div>
                 <div className="header-box">
                 <div className="header-box-lft"> 

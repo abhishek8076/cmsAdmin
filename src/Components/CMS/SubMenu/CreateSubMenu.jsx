@@ -250,7 +250,13 @@ export const CreateSubMenu = () => {
     </ol>
   </nav>
   </div>
-  <div class="pagetitle-rgt"><button type="button" class="btn btn-info">Back</button></div>
+  <div className="pagetitle-rgt">
+              <Link to ="/dashboard">
+              <button type="button" class="btn btn-info">
+                Back
+              </button>
+              </Link>
+            </div>
 </div>
       <div className="row justify-content-center">
         <div class="card">
