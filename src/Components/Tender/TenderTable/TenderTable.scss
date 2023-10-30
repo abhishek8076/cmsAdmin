@@ -1,6 +1,6 @@
 .header-box {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
 }
 .header-box-rgt p {
@@ -9,6 +9,5 @@
     color: #fff;
     text-transform: capitalize;
     border-radius: 5px;
-    margin-bottom: 39px;
     cursor: pointer;
 }
