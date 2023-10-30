@@ -101,6 +101,7 @@ export default function MenuSubMenuTable() {
             <Sidebar />
             <main id="main" className="main">
                 <div className="pagetitle">
+                <div class="pagetitle-lft">
                     <h1 className='maintitle'>All Menus</h1>
                     <nav>
                         <ol className="breadcrumb">
@@ -109,6 +110,8 @@ export default function MenuSubMenuTable() {
                             <li className="breadcrumb-item active">All Menu </li>
                         </ol>
                     </nav>
+</div>
+<div class="pagetitle-rgt"><button type="button" class="btn btn-info">Back</button></div>
                 </div>
                 <div className="header-box">
                 <div className="header-box-lft"> 

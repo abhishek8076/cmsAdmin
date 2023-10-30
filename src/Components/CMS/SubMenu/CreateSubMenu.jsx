@@ -239,6 +239,7 @@ export const CreateSubMenu = () => {
         <main id="main" class="main">
 
 <div class="pagetitle">
+<div class="pagetitle-lft">
   <h1>Create Sub-Menu</h1>
   <nav>
     <ol class="breadcrumb">
@@ -248,6 +249,8 @@ export const CreateSubMenu = () => {
      
     </ol>
   </nav>
+  </div>
+  <div class="pagetitle-rgt"><button type="button" class="btn btn-info">Back</button></div>
 </div>
       <div className="row justify-content-center">
         <div class="card">
