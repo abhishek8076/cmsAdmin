@@ -20,6 +20,7 @@ import apiClient from '../../../Service/ApiClient';
 import apis from '../../../Service/apis.json';
 import Header from '../../header/Header';
 import Sidebar from '../../sidebar/Sidebar';
+import Footer from '../../footer/Footer';
 
 
 function EAlert(props) {
@@ -407,6 +408,7 @@ export const CreateFooterData = () => {
       </div>
     </div>
     </main>
+    <Footer />
     </div>
   );
 };
