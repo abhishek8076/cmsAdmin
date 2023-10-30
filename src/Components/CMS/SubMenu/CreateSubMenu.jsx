@@ -46,7 +46,7 @@ export const CreateSubMenu = () => {
     submenu_id: "",
     file: '',
     html: '',
-    
+    languagetype:'',
   });
 
   const [errors, setErrors] = useState({});
@@ -60,6 +60,7 @@ export const CreateSubMenu = () => {
       submenu_id: "",
       file: '',
       html: '',
+      languagetype:'',
     
     });
   }, []);
@@ -111,9 +112,9 @@ export const CreateSubMenu = () => {
       newErrors.file = 'File is required';
     }
 
-    // if (formData.ContentType === '1' && !html) {
-    //   newErrors.html = 'HTML content is required';
-    // }
+    if (!formData.languagetype ) {
+      newErrors.languagetype = 'Select Language';
+    }
 
     setErrors(newErrors);
 
@@ -165,6 +166,7 @@ export const CreateSubMenu = () => {
    
       // formDataToSend.append('submenu_id', formData.submenu_id);
       formDataToSend.append('submenu_id', formData.submenu_id);
+      formDataToSend.append('languagetype', formData.languagetype);
 
       if (formData.ContentType === '4') {
         formDataToSend.append('external_link', formData.external_link);
@@ -185,6 +187,18 @@ export const CreateSubMenu = () => {
       toast.success('Data saved successfully!');
       setModalMessage('Data saved successfully!');
       setSnackbarOpen(true);
+
+      setFormData({
+        MenuName: '',
+        ContentType: '',
+        external_link: '',
+        internal_link: '',
+        submenu_id: "",
+        file: '',
+        html: '',
+        languagetype:'',
+      
+      });
     } catch (error) {
       console.error('Error saving data:', error);
     }
@@ -242,6 +256,21 @@ export const CreateSubMenu = () => {
         <div class="box-sec">
         <h1 className="text-center text-dark">Sub Menu</h1>
           <Form.Group className="mb-3" controlId="Usertype">
+          <div className="mb-3">
+                  <label className="form-label text-dark">Language Type</label>
+                  <select
+                    className="form-select"
+                    name="languagetype"
+                    value={formData.languagetype}
+                    onChange={handleInputChange}
+                  >
+                    <option value="0">Select a Language</option>
+                    <option value="1">English</option>
+                    <option value="2">Hindi</option>
+                  </select>
+                  {errors.languagetype && <div className="text-danger">{errors.languagetype}</div>}
+                </div>
+
             <div className="mb-12">
               <Form.Label className="text-center" style={{ color: "black" }}>Menu Names</Form.Label>
               <select
@@ -264,7 +293,7 @@ export const CreateSubMenu = () => {
             </div>
           </Form.Group>
           {errors.selectedRole && <div className="text-danger">{errors.selectedRole}</div>}
-
+         
           {/* Input for Name */}
           <div className="mb-3">
             <label className="form-label text-dark">Name</label>

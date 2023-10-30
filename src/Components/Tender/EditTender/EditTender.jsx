@@ -30,6 +30,7 @@ export const EditTender = () => {
     startdate: '',
     end_date: '',  // Corrected field name
     html: '',
+    languagetype: '',
   });
   const [errors, setErrors] = useState({});
   const [editingItemId, setEditingItemId] = useState(null);
@@ -72,6 +73,7 @@ export const EditTender = () => {
         startdate: '',
         end_date: '',
         html: '',
+        languagetype:'',
       });
     }
   }, [id]);
@@ -105,6 +107,9 @@ export const EditTender = () => {
 
     if (!formData.contenttype) {
       errors.contenttype = 'Select a content type';
+    }
+    if (!formData.languagetype ) {
+      errors.languagetype = 'Select a Language';
     }
 
     if (formData.contenttype === '4' && !formData.external_file) {
@@ -240,6 +245,7 @@ export const EditTender = () => {
 
         formDataToSend.append('startdate', formData.startdate);
         formDataToSend.append('end_date', formData.end_date);
+        formDataToSend.append('languagetype', formData.languagetype);
 
         const response = await apiClient.put(apis.Tenderbyid + id, formDataToSend, {
           headers: {
@@ -287,6 +293,20 @@ export const EditTender = () => {
             <div className="col-md-6">
               <div class="box-sec">
                 <h1 className="text-center heading-main">Tender</h1>
+                <div className="mb-3">
+                  <label className="form-label text-dark">Language Type</label>
+                  <select
+                    className="form-select"
+                    name="languagetype"
+                    value={formData.languagetype}
+                    onChange={handleInputChange}
+                  >
+                    <option value="0">Select a Language</option>
+                    <option value="1">English</option>
+                    <option value="2">Hindi</option>
+                  </select>
+                  {errors.languagetype && <div className="text-danger">{errors.languagetype}</div>}
+                </div>
                 <div className="mb-3">
                   <label className="form-label text-dark">Name</label>
                   <input

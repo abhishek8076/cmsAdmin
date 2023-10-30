@@ -41,7 +41,8 @@ export const CreateTender = () => {
     file: "",
     startdate: '',
     end_date: '',
-    html: ""
+    html: "",
+    languagetype:'',
   });
   const [errors, setErrors] = useState({});
 
@@ -61,7 +62,8 @@ export const CreateTender = () => {
       file: "",
       startdate: '',
       end_date: '',
-      html: ""
+      html: "",
+      languagetype:"",
     });
   }, []);
 
@@ -77,7 +79,9 @@ export const CreateTender = () => {
     } else if (!/^[A-Za-z ]+$/.test(formData.name)) {
       errors.name = 'Please input alphabet characters only';
     }
-
+    if (!formData.languagetype ) {
+      errors.languagetype = 'Select Language';
+    }
     if (!formData.contenttype) {
       errors.contenttype = 'Select a content type';
     }
@@ -159,6 +163,7 @@ export const CreateTender = () => {
 
         formDataToSend.append('startdate', formData.startdate);
         formDataToSend.append('end_date', formData.end_date);
+        formDataToSend.append('languagetype', formData.languagetype);
 
         const response = await apiClient.post(apis.Tender, formDataToSend, {
           headers: {
@@ -174,7 +179,8 @@ export const CreateTender = () => {
           file: "",
           startdate: '',
           end_date: '',
-          html: ""
+          html: "",
+          languagetype:"",
         });
         toast.success('Data saved successfully!');
         openModal('Data saved successfully!');
@@ -231,6 +237,20 @@ export const CreateTender = () => {
             <div class="mb-3 mt-md-4">
           <div class="box-sec">
             <h1 className="text-center heading-main">Tender</h1>
+            <div className="mb-3">
+                  <label className="form-label text-dark">Language Type</label>
+                  <select
+                    className="form-select"
+                    name="languagetype"
+                    value={formData.languagetype}
+                    onChange={handleInputChange}
+                  >
+                    <option value="0">Select a Language</option>
+                    <option value="1">English</option>
+                    <option value="2">Hindi</option>
+                  </select>
+                  {errors.languagetype && <div className="text-danger">{errors.languagetype}</div>}
+                </div>
             <div className="mb-3">
               <label className="form-label text-dark">Name</label>
               <input
