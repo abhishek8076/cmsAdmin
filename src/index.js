@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {App} from './App.js';
+import $ from "jquery";
 // import './index.css'
 // import './assets/vendor/apexcharts/apexcharts.css'
 // import './assets/vendor/bootstrap/css/bootstrap.min.css'
@@ -9,11 +10,14 @@ import {App} from './App.js';
 // import './assets/vendor/quill/quill.bubble.css'
 // import './assets/vendor/remixicon/remixicon.css'
 // import './assets/vendor/simple-datatables/style.css'
-// import 'bootstrap/dist/css/bootstrap.min.css';vd
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.js';
 import { BrowserRouter } from 'react-router-dom';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  
   <React.StrictMode>
     <BrowserRouter>
     <App />

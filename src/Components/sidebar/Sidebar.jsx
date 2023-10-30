@@ -1,5 +1,8 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Link,useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import $ from "jquery";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -10,6 +13,12 @@ const Sidebar = () => {
     // Navigate to the login page
     navigate('/');
   };
+  useEffect(() => {
+    // Your jQuery code here
+    $(".toggle-sidebar-btn").click(function() {
+      $("body").toggleClass("toggle-sidebar");
+    });
+  }, []); 
   return (
     <div>
 
