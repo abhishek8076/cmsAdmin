@@ -31,7 +31,7 @@ export const HomePage = () => {
     // Fetch the existing content when the component loads
     async function fetchData() {
       try {
-        const response = await apiClient.get(apis.homepagebyid+id);
+        const response = await apiClient.get(apis.homepagebyid+24);
         setData(response.data.h_html);
       } catch (error) {
         console.error('Error fetching content:', error);
@@ -54,7 +54,7 @@ export const HomePage = () => {
       const sendformData = new FormData();
       sendformData.append('h_html', content);
 
-      const response = await apiClient.put(apis.homepagebyid + id, sendformData, {
+      const response = await apiClient.put(apis.homepagebyid + 24, sendformData, {
         headers: {
           'Content-Type': 'application/json', // Set the content type to match the server's expectations
         },
