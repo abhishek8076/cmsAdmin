@@ -213,6 +213,7 @@ export const CreateFooterData = () => {
     <Sidebar />
   <main id="main" class="main">
     <div class="pagetitle">
+    <div class="pagetitle-lft">
       <h1>Create Footer</h1>
       <nav>
         <ol class="breadcrumb">
@@ -221,6 +222,14 @@ export const CreateFooterData = () => {
           <li class="breadcrumb-item active">Create Footer Description</li>
         </ol>
       </nav>
+</div>
+<div class="pagetitle-rgt">
+            <a href="/dashboard">
+              <button type="button" class="btn btn-info">
+                Back
+              </button>
+            </a>
+          </div>
     </div>
     <div className="container">
       <div className="row">
