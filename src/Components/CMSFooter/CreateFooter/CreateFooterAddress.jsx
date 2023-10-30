@@ -33,6 +33,7 @@ export const CreateFooterAddress = () => {
     mobile_no: '',
     contenttype: 0,
     footertype:3,
+    languagetype: '',
   });
   const [errors, setErrors] = useState({});
 
@@ -52,7 +53,9 @@ export const CreateFooterAddress = () => {
     if (!formData.address.trim()) {
       newErrors.address = 'Address is required';
     }
-  
+    if (!formData.languagetype ) {
+      errors.languagetype = 'Select a Language';
+    }
   
 
     setErrors(newErrors);
@@ -80,6 +83,7 @@ export const CreateFooterAddress = () => {
         formDataToSend.append('mobile_no', formData.mobile_no);
         formDataToSend.append('footertype', formData.footertype);
         formDataToSend.append('contenttype', formData.contenttype);
+        formDataToSend.append('languagetype', formData.languagetype);
         const response = await apiClient.post(apis.newfooter, formDataToSend, {
           headers: {
             'Content-Type': 'multipart/form-data',
@@ -95,6 +99,7 @@ export const CreateFooterAddress = () => {
           tittle_name: '',
           address: '',
           mobile_no: '',
+          languagetype: '',
         });
       }
     } catch (error) {
@@ -134,6 +139,20 @@ console.log(formData)
           <div className="mb-3">
           <h1 className="text-center heading-main">Office Address</h1>
           </div>
+          <div className="mb-3">
+                  <label className="form-label text-dark">Language Type</label>
+                  <select
+                    className="form-select"
+                    name="languagetype"
+                    value={formData.languagetype}
+                    onChange={handleInputChange}
+                  >
+                    <option value="0">Select a Language</option>
+                    <option value="1">English</option>
+                    <option value="2">Hindi</option>
+                  </select>
+                  {errors.languagetype && <div className="text-danger">{errors.languagetype}</div>}
+                </div>
           <div className="mb-3">
             <label className="form-label text-dark">Enter Title</label>
             <input

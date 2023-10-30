@@ -34,7 +34,8 @@ export const CreateFooterDec = () => {
     tittle_name: '',
     description: '',
     footertype:1,
-    contenttype:0
+    contenttype:0,
+    languagetype: '',
   });
   const [errors, setErrors] = useState({});
 
@@ -43,7 +44,8 @@ export const CreateFooterDec = () => {
       tittle_name: '',
       description: '',
       footertype:1,
-      contenttype:0
+      contenttype:0,
+      languagetype: '',
     });
   }, []);
 
@@ -59,7 +61,9 @@ export const CreateFooterDec = () => {
       } else if (!formData.tittle_name.match(namePattern)) {
         errors.tittle_name = 'Name should only contain alphabets and spaces';
       }
-  
+      if (!formData.languagetype ) {
+        errors.languagetype = 'Select a Language';
+      }
       if (!formData.description) {
         errors.description = 'Description is required';
       }
@@ -101,6 +105,7 @@ export const CreateFooterDec = () => {
       formDataToSend.append('description', formData.description);
       formDataToSend.append('footertype', formData.footertype);
       formDataToSend.append('contenttype', formData.contenttype);
+      formDataToSend.append('languagetype', formData.languagetype);
 
       const response = await apiClient.post(apis.newfooter, formDataToSend, {
         headers: {
@@ -117,7 +122,7 @@ export const CreateFooterDec = () => {
       setFormData({
         tittle_name: '',
         description: '',
-       
+        languagetype:'',
       });
     } catch (error) {
       console.error('Error saving data:', error);
@@ -157,6 +162,20 @@ export const CreateFooterDec = () => {
         <div className="mb-3">
         <h1 className="text-center heading-main">Footer Description</h1>
           </div>
+          <div className="mb-3">
+                  <label className="form-label text-dark">Language Type</label>
+                  <select
+                    className="form-select"
+                    name="languagetype"
+                    value={formData.languagetype}
+                    onChange={handleInputChange}
+                  >
+                    <option value="0">Select a Language</option>
+                    <option value="1">English</option>
+                    <option value="2">Hindi</option>
+                  </select>
+                  {errors.languagetype && <div className="text-danger">{errors.languagetype}</div>}
+                </div>
           <div className="mb-3">
             <label className="form-label text-dark">Enter Title</label>
             <input
