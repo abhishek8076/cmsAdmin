@@ -325,28 +325,22 @@ export const CreateUser=()=> {
                                   </Button>
                                 </div>
 
-                                <Dialog
-                                  className="backdrop"
-                                  open={confirmDialogOpen}
-                                  onClick={handleDeleteCancel}
-                                >
-                                  <Spinner animation="border" role="status">
-                                    <span className="visually-hidden">
-                                      Loading...
-                                    </span>
-                                  </Spinner>
-                                </Dialog>
-                              </Form>
-                            </div>
+                              <Dialog className="backdrop" open={confirmDialogOpen} onClick={handleDeleteCancel}>
+                                <Spinner animation="border" role="status">
+                                  <span className="visually-hidden">Loading...</span>
+                                </Spinner>
+                              </Dialog>
+                            </Form>
                           </div>
-                        </Card.Body>
-                      </Card>
-                    </Col>
-                  </Row>
-                </Container>
-              </div>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </Row>
+              </Container>
             </div>
           </div>
+        </div>
         </main>
       </div>
 
