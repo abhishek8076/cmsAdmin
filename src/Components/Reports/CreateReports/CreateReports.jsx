@@ -214,6 +214,7 @@ export const CreateReports = () => {
         <Sidebar/>
       <main id="main" class="main">
         <div class="pagetitle">
+        <div class="pagetitle-lft">
           <h1>Create Report</h1>
           <nav>
             <ol class="breadcrumb">
@@ -223,6 +224,14 @@ export const CreateReports = () => {
             </ol>
           </nav>
         </div>
+        <div class="pagetitle-rgt">
+      <Link to='/dashboard'>
+              <button type="button" class="btn btn-info">
+                Back
+              </button>
+            </Link>
+          </div>
+</div>
     <div className="container">
       <div className="row">
         <div className="col">

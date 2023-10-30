@@ -269,6 +269,7 @@ export const EditReport = () => {
         <Sidebar />
       <main id="main" class="main">
         <div class="pagetitle">
+        <div class="pagetitle-lft">
           <h1>Edit Report</h1>
           <nav>
             <ol class="breadcrumb">
@@ -276,7 +277,16 @@ export const EditReport = () => {
               <li class="breadcrumb-item">Edit Report</li>
             </ol>
           </nav>
+          </div>
+          <div class="pagetitle-rgt">
+      <Link to='/dashboard'>
+              <button type="button" class="btn btn-info">
+                Back
+              </button>
+            </Link>
+          </div>
         </div>
+
     <div className="list">
    
       <div className="listContainer">

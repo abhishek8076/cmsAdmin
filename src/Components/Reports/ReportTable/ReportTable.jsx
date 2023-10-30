@@ -101,6 +101,7 @@ export default function ReportTable() {
             <Sidebar />
             <main id="main" className="main">
                 <div className="pagetitle">
+                <div class="pagetitle-lft">
                     <h1 className='maintitle'>All Report</h1>
                     <nav>
                         <ol className="breadcrumb">
@@ -109,6 +110,14 @@ export default function ReportTable() {
                             <li className="breadcrumb-item active">All Report </li>
                         </ol>
                     </nav>
+</div>
+<div class="pagetitle-rgt">
+      <Link to='/dashboard'>
+              <button type="button" class="btn btn-info">
+                Back
+              </button>
+            </Link>
+          </div>
                 </div>
                 <div className="header-box">
                 <div className="header-box-lft"> 
