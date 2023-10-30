@@ -9,7 +9,7 @@ import {App} from './App.js';
 // import './assets/vendor/quill/quill.bubble.css'
 // import './assets/vendor/remixicon/remixicon.css'
 // import './assets/vendor/simple-datatables/style.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';vd
 import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
