@@ -40,7 +40,7 @@ import { EditTender } from './Components/Tender/EditTender/EditTender';
 export function App() {
   return (
     <div className="App">
-      { <BrowserRouter>
+    
         <Routes>
           <Route path="/" element={<LoginForm />}/>
           <Route path='/banner' element={<Banner/>}/>
@@ -108,7 +108,7 @@ export function App() {
           </Route>
     
         </Routes>
-      </BrowserRouter> }
+    
       
     </div>
   );
