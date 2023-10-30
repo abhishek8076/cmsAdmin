@@ -35,7 +35,8 @@ export const EditFooterDec = () => {
     tittle_name: '',
     description: '',
     footertype:1,
-    contenttype:0
+    contenttype:0,
+    languagetype: '',
   });
   const [errors, setErrors] = useState({});
 
@@ -74,6 +75,9 @@ export const EditFooterDec = () => {
         errors.tittle_name = 'Name is required';
       } else if (!formData.tittle_name.match(namePattern)) {
         errors.tittle_name = 'Name should only contain alphabets and spaces';
+      }
+      if (!formData.languagetype ) {
+        errors.languagetype = 'Select a Language';
       }
   
       if (!formData.description) {
@@ -125,6 +129,7 @@ export const EditFooterDec = () => {
       formDataToSend.append('description', formData.description);
       formDataToSend.append('footertype', formData.footertype);
       formDataToSend.append('contenttype', formData.contenttype);
+      formDataToSend.append('languagetype', formData.languagetype);
 
       const response = await apiClient.put(apis.getfooterbyid+id , formDataToSend, {
         headers: {
@@ -156,6 +161,20 @@ console.log(formData)
       </div>
       <div className="row justify-content-center">
         <div className="col-md-6">
+        <div className="mb-3">
+                  <label className="form-label text-dark">Language Type</label>
+                  <select
+                    className="form-select"
+                    name="languagetype"
+                    value={formData.languagetype}
+                    onChange={handleInputChange}
+                  >
+                    <option value="0">Select a Language</option>
+                    <option value="1">English</option>
+                    <option value="2">Hindi</option>
+                  </select>
+                  {errors.languagetype && <div className="text-danger">{errors.languagetype}</div>}
+                </div>
           <div className="mb-3">
             <label className="form-label text-dark">Enter Title</label>
             <input

@@ -19,7 +19,8 @@ export const EditFooterAddress = () => {
     address: '',
     mobile_no: '',
     footertype:3,
-    contenttype:0
+    contenttype:0,
+    languagetype: '',
   });
   const [errors, setErrors] = useState({});
 
@@ -33,6 +34,9 @@ export const EditFooterAddress = () => {
   
     if (!formData.address.trim()) {
       newErrors.address = 'Address is required';
+    }
+    if (!formData.languagetype ) {
+      errors.languagetype = 'Select a Language';
     }
   
     if (!formData.mobile_no) {
@@ -71,13 +75,23 @@ export const EditFooterAddress = () => {
         formDataToSend.append('mobile_no', formData.mobile_no);
         formDataToSend.append('footertype', formData.footertype);
         formDataToSend.append('contenttype', formData.contenttype);
+        formDataToSend.append('languagetype', formData.languagetype);
 
         const response = await apiClient.put(apis.getfooterbyid+id, formDataToSend, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
+         
+    
         });
 
+        // Clear the form fields
+        setFormData({
+          tittle_name: '',
+          address: '',
+          mobile_no: '',
+          languagetype: '',
+        });
         console.log('Data saved:', response.data);
         setModalMessage('Data saved successfully!');
         setSnackbarOpen(true);
@@ -105,6 +119,20 @@ export const EditFooterAddress = () => {
       </div>
       <div className="row justify-content-center">
         <div className="col-md-6">
+        <div className="mb-3">
+                  <label className="form-label text-dark">Language Type</label>
+                  <select
+                    className="form-select"
+                    name="languagetype"
+                    value={formData.languagetype}
+                    onChange={handleInputChange}
+                  >
+                    <option value="0">Select a Language</option>
+                    <option value="1">English</option>
+                    <option value="2">Hindi</option>
+                  </select>
+                  {errors.languagetype && <div className="text-danger">{errors.languagetype}</div>}
+                </div>
           <div className="mb-3">
             <label className="form-label text-dark">Enter Title</label>
             <input

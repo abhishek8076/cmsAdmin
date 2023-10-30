@@ -45,6 +45,7 @@ export const EditFooterData = () => {
     file: '',
     html: '',
     footertype:3,
+    languagetype: '',
   });
   const [errors, setErrors] = useState({});
 
@@ -57,6 +58,7 @@ export const EditFooterData = () => {
       file: '',
       html: '',
       footertype:3,
+      languagetype: '',
     });
   }, []);
   const config = useMemo(
@@ -86,6 +88,9 @@ export const EditFooterData = () => {
 
     if (!formData.contenttype) {
       errors.contenttype = 'Select a content type';
+    }
+    if (!formData.languagetype ) {
+      errors.languagetype = 'Select a Language';
     }
 
     if (formData.contenttype === '4' && !formData.external_link) {
@@ -151,6 +156,7 @@ export const EditFooterData = () => {
       formDataToSend.append('tittle_name', formData.tittle_name);
       formDataToSend.append('contenttype', formData.contenttype);
       formDataToSend.append('footertype', formData.footertype);
+      formDataToSend.append('languagetype', formData.languagetype);
 
       if (formData.contenttype === 4) {
         formDataToSend.append('external_link', formData.external_link);
@@ -174,7 +180,14 @@ export const EditFooterData = () => {
       setSnackbarOpen(true);
        // Show the success Snackbar
         // Clear the form fields
-    
+        setFormData({
+          tittle_name: '',
+          contenttype: '',
+          external_link: '',
+          internale_link: '',
+          file: '',
+          html: '',
+        });
     } catch (error) {
       console.error('Error saving data:', error);
     }
@@ -205,6 +218,21 @@ export const EditFooterData = () => {
       </div>
       <div className="row justify-content-center">
         <div className="col-md-6">
+
+        <div className="mb-3">
+                  <label className="form-label text-dark">Language Type</label>
+                  <select
+                    className="form-select"
+                    name="languagetype"
+                    value={formData.languagetype}
+                    onChange={handleInputChange}
+                  >
+                    <option value="0">Select a Language</option>
+                    <option value="1">English</option>
+                    <option value="2">Hindi</option>
+                  </select>
+                  {errors.languagetype && <div className="text-danger">{errors.languagetype}</div>}
+                </div>
           {/* Input for Name */}
           <div className="mb-3">
             <label className="form-label text-dark">Name</label>

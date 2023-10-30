@@ -56,6 +56,7 @@ export const CreateFooterData = () => {
     file: '',
     html: '',
     footertype:4,
+    languagetype: '',
   });
   const navigateFooter = () => {
     // 👇️ navigate to /
@@ -72,6 +73,7 @@ export const CreateFooterData = () => {
       file: '',
       html: '',
       footertype:4,
+      languagetype: '',
     });
   }, []);
 
@@ -88,6 +90,9 @@ export const CreateFooterData = () => {
 
     if (!formData.contenttype) {
       errors.contenttype = 'Select a content type';
+    }
+    if (!formData.languagetype ) {
+      errors.languagetype = 'Select a Language';
     }
 
     if (formData.contenttype === '4' && !formData.external_link) {
@@ -149,6 +154,7 @@ export const CreateFooterData = () => {
       formDataToSend.append('tittle_name', formData.tittle_name);
       formDataToSend.append('contenttype', formData.contenttype);
       formDataToSend.append('footertype', formData.footertype);
+      formDataToSend.append('languagetype', formData.languagetype);
       if (formData.contenttype === '4') {
         formDataToSend.append('external_link', formData.external_link);
       } else if (formData.contenttype === '3') {
@@ -225,6 +231,21 @@ export const CreateFooterData = () => {
         <div class="card"><div class="card-body"><div class="mb-3 mt-md-4">
         <div class="box-sec">
         <h1 className="text-center heading-main">Footer</h1>
+
+        <div className="mb-3">
+                  <label className="form-label text-dark">Language Type</label>
+                  <select
+                    className="form-select"
+                    name="languagetype"
+                    value={formData.languagetype}
+                    onChange={handleInputChange}
+                  >
+                    <option value="0">Select a Language</option>
+                    <option value="1">English</option>
+                    <option value="2">Hindi</option>
+                  </select>
+                  {errors.languagetype && <div className="text-danger">{errors.languagetype}</div>}
+                </div>
           {/* Input for Name */}
           <div className="mb-3">
             <label className="form-label text-dark">Name</label>
