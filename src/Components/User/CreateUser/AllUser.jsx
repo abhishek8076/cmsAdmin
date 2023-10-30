@@ -16,6 +16,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import apiClient from '../../../Service/ApiClient';
 import api from '../../../Service/apis.json';
+import './AllUser.scss';
 
 export default function AllUser() {
     const [apiData, setApiData] = useState([]);
@@ -98,6 +99,7 @@ export default function AllUser() {
             <Sidebar />
             <main id="main" className="main">
                 <div className="pagetitle">
+                    <div className="pagetitle-lft">
                     <h1>All User</h1>
                     <nav>
                         <ol className="breadcrumb">
@@ -106,6 +108,10 @@ export default function AllUser() {
                             <li className="breadcrumb-item active">All User </li>
                         </ol>
                     </nav>
+                    </div>
+                    <div className="pagetitle-rgt">
+                        <button type="button" class="btn btn-info">Back</button>
+                    </div>
                 </div>
                 <Box sx={{ height: 400, width: '100%' }}>
                     <DataGrid
