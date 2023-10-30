@@ -86,6 +86,7 @@ export const HomePage = () => {
         <main id="main" class="main">
 
 <div class="pagetitle">
+<div className="pagetitle-lft">
   <h1>Create HomePage</h1>
   <nav>
     <ol class="breadcrumb">
@@ -95,7 +96,12 @@ export const HomePage = () => {
      
     </ol>
   </nav>
+  </div>
+  <div className="pagetitle-rgt">
+       <button type="button" class="btn btn-info">Back</button>
+  </div>
 </div>
+<div class="row justify-content-center"><div class="card"><div class="card-body"><div class="mb-3 mt-md-4">
       <div className="box-sec">
         <h1 className="text-center text-dark heading-main">Home Page</h1>
         <div className="App">
@@ -128,6 +134,10 @@ export const HomePage = () => {
             {modalMessage}
           </Alert>
         </Snackbar>
+      </div>
+      </div>
+      </div>
+      </div>
       </div>
       <Footer/>
       </main>
