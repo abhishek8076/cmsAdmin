@@ -163,9 +163,11 @@ export const CreateUser=()=> {
               </nav>
             </div>
             <div className="pagetitle-rgt">
+              <Link to ="/dashboard">
               <button type="button" class="btn btn-info">
                 Back
               </button>
+              </Link>
             </div>
           </div>
           <div className="home">

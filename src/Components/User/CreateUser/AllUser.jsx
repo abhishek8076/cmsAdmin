@@ -111,7 +111,9 @@ export default function AllUser() {
                     </nav>
                     </div>
                     <div className="pagetitle-rgt">
-                        <button type="button" class="btn btn-info">Back</button>
+                        <Link to='/dashboard'>
+                        <button type="button"  class="btn btn-info">Back</button>
+                        </Link>
                     </div>
                 </div>
                 <Box sx={{ height: 400, width: '100%' }}>
