@@ -123,7 +123,7 @@ console.log(formData)
       <main id="main" class="main">
         <div class="pagetitle">
           <div class="pagetitle-lft">
-            <h1>Create Footer</h1>
+            <h1>Create Footer Address</h1>
             <nav>
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">Home</li>

@@ -14,6 +14,7 @@ import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import Footer from '../../footer/Footer';
 
 export default function FooterTable() {
     const [apiData, setApiData] = useState([]);
@@ -90,61 +91,73 @@ export default function FooterTable() {
     }, []);
 
     return (
-        <div>
-            <Header />
-            <Sidebar />
-            <main id="main" className="main">
-                <div className="pagetitle">
-                    <h1>Create Footer</h1>
-                    <nav>
-                        <ol className="breadcrumb">
-                            <li className="breadcrumb-item">Home</li>
-                            <li className="breadcrumb-item">Footer</li>
-                            <li className="breadcrumb-item active">Create Footer Address</li>
-                        </ol>
-                    </nav>
-                </div>
-                <Box sx={{ height: 400, width: '100%' }}>
-                    <DataGrid
-                        rows={apiData}
-                        columns={columns}
-                        disableColumnFilter
-                        disableColumnSelector
-                        disableDensitySelector
-                        components={{
-                            Toolbar: GridToolbar,
-                        }}
-                        componentsProps={{
-                            toolbar: {
-                                showQuickFilter: true,
-                            },
-                        }}
-                    />
-                </Box>
-            </main>
-            <Dialog open={confirmDialogOpen} onClose={handleCloseConfirmation}>
-                <DialogTitle>Confirm Delete</DialogTitle>
-                <DialogContent>
-                    Are you sure you want to delete this data?
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleCloseConfirmation} color="primary">
-                        Cancel
-                    </Button>
-                    <Button onClick={handleConfirmSubmit} color="primary">
-                        Confirm
-                    </Button>
-                </DialogActions>
-            </Dialog>
-            <Snackbar
-                open={snackbarOpen}
-                autoHideDuration={3000}
-                onClose={() => setSnackbarOpen(false)}
-            >
-                <MuiAlert severity="success" onClose={() => setSnackbarOpen(false)}>
-                    {modalMessage}
-                </MuiAlert>
-            </Snackbar>
-        </div>
+      <div>
+        <Header />
+        <Sidebar />
+        <main id="main" className="main">
+          <div className="pagetitle">
+            <div class="pagetitle-lft">
+              <h1>Create Footer</h1>
+              <nav>
+                <ol className="breadcrumb">
+                  <li className="breadcrumb-item">Home</li>
+                  <li className="breadcrumb-item">Footer</li>
+                  <li className="breadcrumb-item active">
+                    Create Footer Address
+                  </li>
+                </ol>
+              </nav>
+            </div>
+            <div class="pagetitle-rgt">
+              <Link to ="/dashboard">
+                <button type="button" class="btn btn-info">
+                  Back
+                </button>
+                </Link>
+            </div>
+          </div>
+          <Box sx={{ height: 400, width: "100%" }}>
+            <DataGrid
+              rows={apiData}
+              columns={columns}
+              disableColumnFilter
+              disableColumnSelector
+              disableDensitySelector
+              components={{
+                Toolbar: GridToolbar,
+              }}
+              componentsProps={{
+                toolbar: {
+                  showQuickFilter: true,
+                },
+              }}
+            />
+          </Box>
+        </main>
+        <Footer />
+        <Dialog open={confirmDialogOpen} onClose={handleCloseConfirmation}>
+          <DialogTitle>Confirm Delete</DialogTitle>
+          <DialogContent>
+            Are you sure you want to delete this data?
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseConfirmation} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={handleConfirmSubmit} color="primary">
+              Confirm
+            </Button>
+          </DialogActions>
+        </Dialog>
+        <Snackbar
+          open={snackbarOpen}
+          autoHideDuration={3000}
+          onClose={() => setSnackbarOpen(false)}
+        >
+          <MuiAlert severity="success" onClose={() => setSnackbarOpen(false)}>
+            {modalMessage}
+          </MuiAlert>
+        </Snackbar>
+      </div>
     );
 }

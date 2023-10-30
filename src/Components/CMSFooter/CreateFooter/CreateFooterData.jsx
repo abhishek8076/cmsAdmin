@@ -215,12 +215,12 @@ export const CreateFooterData = () => {
   <main id="main" class="main">
     <div class="pagetitle">
     <div class="pagetitle-lft">
-      <h1>Create Footer</h1>
+      <h1>Create Footer Data</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item">Home</li>
           <li class="breadcrumb-item">Footer</li>
-          <li class="breadcrumb-item active">Create Footer Description</li>
+          <li class="breadcrumb-item active">Create Footer Data</li>
         </ol>
       </nav>
 </div>

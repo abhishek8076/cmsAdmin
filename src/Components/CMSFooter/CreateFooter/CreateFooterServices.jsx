@@ -18,6 +18,7 @@ import apiClient from '../../../Service/ApiClient';
 import apis from '../../../Service/apis.json';
 import Header from '../../header/Header';
 import Sidebar from '../../sidebar/Sidebar';
+import Footer from '../../footer/Footer';
 
 
 
@@ -138,7 +139,8 @@ export const CreateFooterService = () => {
     <Sidebar />
   <main id="main" class="main">
     <div class="pagetitle">
-      <h1>Create Footer</h1>
+    <div class="pagetitle-lft">
+      <h1>Create Footer Service</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item">Home</li>
@@ -146,6 +148,14 @@ export const CreateFooterService = () => {
           <li class="breadcrumb-item active">Create Footer Service</li>
         </ol>
       </nav>
+      </div>
+      <div class="pagetitle-rgt">
+            <a href="/dashboard">
+              <button type="button" class="btn btn-info">
+                Back
+              </button>
+            </a>
+          </div>
     </div>
     <div className="container">
       <div className="row">
@@ -244,6 +254,7 @@ export const CreateFooterService = () => {
       </div>
     </div>
     </main>
+    <Footer />
     </div>
   );
 };

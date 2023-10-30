@@ -207,6 +207,7 @@ export const CreateWhatsNew = () => {
         <Sidebar />
       <main id="main" class="main">
         <div class="pagetitle">
+        <div class="pagetitle-lft">
           <h1>Create What's New</h1>
           <nav>
             <ol class="breadcrumb">
@@ -215,6 +216,12 @@ export const CreateWhatsNew = () => {
               <li class="breadcrumb-item active">Create What's New</li>
             </ol>
           </nav>
+</div>
+<div class="pagetitle-rgt">
+  <Link to="/dashboard">
+    <button type="button" class="btn btn-info">Back</button>
+    </Link>
+    </div>
         </div>
     <div className="container">
       <div className="row">
