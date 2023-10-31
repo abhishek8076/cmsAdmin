@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link,useNavigate } from 'react-router-dom';
-
+import $ from "jquery";
 const Header = () => {
   
   const storedUserString = localStorage.getItem("user");
@@ -13,6 +13,11 @@ const Header = () => {
     // Navigate to the login page
     navigate('/');
   };
+  const  jQuerycode = () => {
+    $(".toggle-sidebar-btn").click(function() {
+      $("body").toggleClass("toggle-sidebar");
+    });
+  }
   return (
     <div>
 
@@ -32,7 +37,7 @@ const Header = () => {
       <ul class="d-flex align-items-center">
 
         <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
+          <a class="nav-link nav-icon search-bar-toggle " href="#" onClick={jQuerycode}>
             <i class="bi bi-search"></i>
           </a>
         </li>
