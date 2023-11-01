@@ -18,6 +18,7 @@ import apiClient from '../../../Service/ApiClient';
 import api from '../../../Service/apis.json';
 import Footer from '../../footer/Footer';
 import AddIcon from '@mui/icons-material/Add';
+import DesignServicesIcon from '@mui/icons-material/DesignServices';
 // import './WhatsNewTable.scss'
 
 export default function MenuSubMenuTable() {
@@ -27,6 +28,9 @@ export default function MenuSubMenuTable() {
     const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const storedUserString = localStorage.getItem("user");
+    const user = JSON.parse(storedUserString);
+
 
     const columns = [
         { field: "rowIndex", headerName: "S.No", width: 50 }
@@ -37,12 +41,19 @@ export default function MenuSubMenuTable() {
         { field: "u_menu_url ", headerName: "Menu Url",width: 200 },
         {
             field: "edit",
-            headerName: "Edit",
+            headerName: "Edit", 
             sortable: false,
-            renderCell: (params) => (
-                <Link to={'/cms/editdata/'+params.row.u_id}>
-                    <EditIcon style={{ cursor: 'pointer' }} />
-                </Link>
+            renderCell: (params) =>(
+                user.r_usertype === 1 && null ? ( // Check the user role here
+                    <Link to={'/user/edituser/' + params.row.users_id}>
+                        <EditIcon style={{ cursor: 'pointer' }} />
+                    </Link>
+                ) : (
+                    <DesignServicesIcon
+                        style={{ cursor: 'no-drop',color:'red'  }}
+                        disabled
+                    />
+                )
             ),
         },
         {
