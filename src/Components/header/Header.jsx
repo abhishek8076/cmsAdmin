@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link,useNavigate } from 'react-router-dom';
 import $ from "jquery";
+import 'https://code.jquery.com/jquery-3.4.1.min.js';
 const Header = () => {
   
   const storedUserString = localStorage.getItem("user");
@@ -15,11 +16,12 @@ const Header = () => {
   };
   const  jQuerycode = () => {
     $(".toggle-sidebar-btn").click(function() {
-      $("body").toggleClass("toggle-sidebar");
+      $(".body").toggleClass("toggle-sidebar");
+      console.log("sdafdsafdsafsa")
     });
   }
   return (
-    <div>
+    <div className='body'>
 
 
   <header id="header" class="header fixed-top d-flex align-items-center">
@@ -37,7 +39,7 @@ const Header = () => {
       <ul class="d-flex align-items-center">
 
         <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#" onClick={jQuerycode}>
+          <a class="nav-link nav-icon search-bar-toggle "  onClick={jQuerycode}>
             <i class="bi bi-search"></i>
           </a>
         </li>
@@ -200,10 +202,10 @@ const Header = () => {
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <Link class="dropdown-item d-flex align-items-center" to='/Profile'>
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
-              </a>
+              </Link>
             </li>
             <li>
               <hr class="dropdown-divider"/>

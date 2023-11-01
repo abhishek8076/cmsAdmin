@@ -29,6 +29,7 @@ function EAlert(props) {
 export const EditFooterData = () => {
   const {id}= useParams()
   const [cotent, setContent] = useState('');
+  const [menudata,setMenudata]=useState('')
   const [file, setselectefile] = useState(null);
   const [confirmDialogOpen, setConfirmDialogOpen] = useState(false); // Confirmation dialog state
   // const [snackbarOpen, setSnackbarOpen] = useState(false); // Snackbar state
@@ -197,7 +198,9 @@ export const EditFooterData = () => {
       try {
        
         const response = await apiClient.get(apis.getfooterbyid+id);
+        const menuresponse = await apiClient.get(apis.getmenuname)
         setFormData(response.data);
+        setMenudata(menuresponse.data)
      
       } catch (error) {
         console.error('Error fetching user data:', error);
@@ -227,9 +230,9 @@ export const EditFooterData = () => {
                     value={formData.languagetype}
                     onChange={handleInputChange}
                   >
-                    <option value="0">Select a Language</option>
-                    <option value="1">English</option>
-                    <option value="2">Hindi</option>
+                    <option value="">Select a Language</option>
+                    <option value={1}>English</option>
+                    <option value={2}>Hindi</option>
                   </select>
                   {errors.languagetype && <div className="text-danger">{errors.languagetype}</div>}
                 </div>
@@ -257,16 +260,16 @@ export const EditFooterData = () => {
               onChange={handleInputChange}
             >
               <option value="">Select a content type</option>
-              <option value="4">External Link</option>
-              <option value="3">Internal Link</option>
-              <option value="2">File</option>
-              <option value="1">HTML</option>
+              <option value={4}>External Link</option>
+              <option value={3}>Internal Link</option>
+              <option value={2}>File</option>
+              <option value={1}>HTML</option>
             </select>
             {errors.contenttype && <div className="text-danger">{errors.contenttype}</div>}
           </div>
 
           {/* Input for External Link */}
-          {formData.contenttype === '4' && (
+          {parseInt(formData.contenttype) === 4 && (
             <div className="mb-3">
               <label className="form-label text-dark">Enter External Link</label>
               <input
@@ -282,23 +285,37 @@ export const EditFooterData = () => {
           )}
 
           {/* Input for Internal Link */}
-          {formData.contenttype === '3' && (
+          {parseInt(formData.contenttype) === 3 && (
             <div className="mb-3">
               <label className="form-label text-dark">Enter Internal Link</label>
-              <input
+              {/* <input
                 className="form-control"
                 type="text"
                 placeholder="Enter Internal Link"
                 name="internale_link"
                 value={formData.internale_link}
                 onChange={handleInputChange}
-              />
+              /> */}
+                <select
+                                  className='form-control'
+                                  name='internal_link'
+                                  value={formData.internal_link}
+                                  onChange={handleInputChange}
+                                  // isInvalid={!!formErrors.internal_link}
+                                >
+                                  <option value='' style={{color:"black"}}>Select a Menu Name</option>
+                                  {menudata.map((data) => (
+                                    <option key={data.u_id} value={"/menu/"+data.u_menu_url}>
+                                      {"Menu Name"+":-"+data.u_menu_name}
+                                    </option>
+                                  ))}
+                                </select>
               {errors.internale_link && <div className="text-danger">{errors.internale_link}</div>}
             </div>
           )}
 
           {/* Input for File */}
-          {formData.contenttype === '2' && (
+          {parseInt(formData.contenttype) === 2 && (
             <div className="mb-3">
               <label className="form-label text-dark">Choose File</label>
               <input
@@ -312,7 +329,7 @@ export const EditFooterData = () => {
           )}
 
           {/* HTML Editor Input */}
-          {formData.contenttype === 1 && (
+          {parseInt(formData.contenttype) === 1 && (
             <div className="mb-3">
               <label className="form-label text-dark">HTML Editor</label>
               <div>

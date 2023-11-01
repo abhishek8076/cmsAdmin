@@ -103,12 +103,13 @@ export const EditUser=()=> {
     try {
       const formDataToSend = {
         ...formData,
-        usertype: parseInt(formData.usertype, 10),
+        usertype: parseInt(formData.usertype),
       };
-
+      console.log(formDataToSend)
       const response = await apiClient.put(api.deleteuser+id, formDataToSend);
+      
       if (response.status === 200) {
-        console.log("user"+ response)
+        
         // Simulate a 3-second delay
         setTimeout(() => {
           // Set loading state back to false after the delay
@@ -130,6 +131,7 @@ export const EditUser=()=> {
     const fetchRoles = async () => {
       try {
         const response = await apiClient.get(api.getUserType);
+       
         setDropdownOptions(response.data);
       } catch (error) {
         console.error('Error fetching roles:', error);
@@ -141,6 +143,7 @@ export const EditUser=()=> {
     const fetchRoles = async () => {
       try {
         const response = await apiClient.get(api.deleteuser+id);
+       
         setFormData(response.data);
       } catch (error) {
         console.error('Error fetching roles:', error);
@@ -148,7 +151,8 @@ export const EditUser=()=> {
     };
     fetchRoles();
   }, []);
-  console.log(formData)
+  console.log("user"+ formData)
+  console.log("type"+ dropdownOptions)
 
   return (
     <>

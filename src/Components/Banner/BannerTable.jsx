@@ -70,6 +70,9 @@ export default function BannerTable() {
     const handleCloseConfirmation = () => {
         setConfirmDialogOpen(false);
     };
+    const generateSerialNumbers = () => {
+    return apiData.map((_, index) => ({ id: index + 1, ...apiData[index] }));
+}
 
     useEffect(() => {
         async function fetchData() {
@@ -77,6 +80,8 @@ export default function BannerTable() {
                 const response = await apiClient.get(apis.getimage);
                 const dataWithIds = response.data.map((row, index) => ({ id: index, ...row }));
                 setApiData(dataWithIds);
+              
+
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

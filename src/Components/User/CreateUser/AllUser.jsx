@@ -18,6 +18,7 @@ import apiClient from '../../../Service/ApiClient';
 import api from '../../../Service/apis.json';
 import './AllUser.scss';
 import Footer from '../../footer/Footer';
+import DesignServicesIcon from '@mui/icons-material/DesignServices';
 
 export default function AllUser() {
     const [apiData, setApiData] = useState([]);
@@ -26,6 +27,9 @@ export default function AllUser() {
     const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    // const userRole = 'admin'
+    const storedUserString = localStorage.getItem("user");
+    const user = JSON.parse(storedUserString);
 
     const columns = [
         { field: "rowIndex", headerName: "S.No", width: 50 }
@@ -39,9 +43,16 @@ export default function AllUser() {
             headerName: "Edit",
             sortable: false,
             renderCell: (params) => (
-                <Link to={'/user/edituser/'+params.row.users_id}>
-                    <EditIcon style={{ cursor: 'pointer' }} />
-                </Link>
+                user.r_usertype === 1 && null ? ( // Check the user role here
+                    <Link to={'/user/edituser/' + params.row.users_id}>
+                        <EditIcon style={{ cursor: 'pointer' }} />
+                    </Link>
+                ) : (
+                    <DesignServicesIcon
+                        style={{ cursor: 'no-drop',color:'red'  }}
+                        disabled
+                    />
+                )
             ),
         },
         {
@@ -49,10 +60,17 @@ export default function AllUser() {
             headerName: "Delete",
             sortable: false,
             renderCell: (params) => (
-                <DeleteIcon
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => handleDeleteClick(params.row)}
-                />
+                user.r_usertype === 1  &&  null ? (
+                    <DeleteIcon
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => handleDeleteClick(params.row)}
+                    />
+                ) : (
+                    <DeleteIcon
+                        style={{ cursor: 'no-drop',color:'red' }}
+                        disabled
+                    />
+                )
             ),
         }
     ];
@@ -116,8 +134,9 @@ export default function AllUser() {
                         </Link>
                     </div>
                 </div>
-                <Box sx={{ height: 400, width: '100%' }}>
+                <Box sx={{ height: 400, width: '100%' }}style={{backgroundColor:"#fff"}}>
                     <DataGrid
+                        
                         rows={apiData}
                         columns={columns}
                         disableColumnFilter
