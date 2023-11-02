@@ -37,6 +37,7 @@ export const Slider = ({ id, onDelete }) => {
       const imagePath = response.data.imgpath;
 
       console.log('Image uploaded successfully!', response.data);
+      window.location.reload();
 
       // Show a success toast notification
       toast.success('Image uploaded successfully!', {

@@ -36,6 +36,7 @@ import ReportTable from './Components/Reports/ReportTable/ReportTable';
 import { EditReport } from './Components/Reports/EditReport/EditReport';
 import TenderTable from './Components/Tender/TenderTable/TenderTable';
 import { EditTender } from './Components/Tender/EditTender/EditTender';
+import { ErrorPage } from './pages/Error/ErrorPage';
 
 export function App() {
   return (
@@ -106,7 +107,7 @@ export function App() {
            <Route path="/profile">
             <Route index element={<Profile /> } />
           </Route>
-    
+    <Route path='*' element={<ErrorPage/>}/>
         </Routes>
     
       
