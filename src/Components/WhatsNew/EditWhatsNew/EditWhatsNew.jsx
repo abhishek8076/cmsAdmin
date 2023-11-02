@@ -18,11 +18,11 @@ export const EditWhatsNew = () => {
   const [file, setFile] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
-  const [selectedRole, setSelectedRole] = useState('');
+  const [menudata, setmenudata] = useState('');
   const [prevContentType, setPrevContentType] = useState('');
 
   const [formData, setFormData] = useState({
-    news_tittle: '',  // Corrected typo in the field name
+    news_title: '',  // Corrected typo in the field name
     contenttype: '',
     external_file: '',
     internal_file: '',  // Corrected field name
@@ -64,7 +64,7 @@ export const EditWhatsNew = () => {
         });
     } else {
       setFormData({
-        news_tittle: '',
+        news_title: '',
         contenttype: 0,
         external_file: '',
         internal_file: '',
@@ -77,20 +77,20 @@ export const EditWhatsNew = () => {
   }, [id]);
 
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
+  useEffect(() => {
+    async function fetchData() {
+      try {
 
-  //       const response = await apiClient.get(apis.getwhatsnewbyid + id);
-  //       setFormData(response.data);
+        const response = await apiClient.get(apis.getmenuname );
+        setmenudata(response.data);
 
-  //     } catch (error) {
-  //       console.error('Error fetching user data:', error);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
 
-  //     }
-  //   }
-  //   fetchData();
-  // }, [id]);
+      }
+    }
+    fetchData();
+  }, [id]);
 
   const handleEditorChange = (content) => {
     sethtml(content);
@@ -99,8 +99,8 @@ export const EditWhatsNew = () => {
   const validateForm = () => {
     const errors = {};
 
-    if (!formData.news_tittle) {
-      errors.news_tittle = 'Name is required';
+    if (!formData.news_title) {
+      errors.news_title = 'Name is required';
     }
 
     if (!formData.contenttype) {
@@ -142,27 +142,24 @@ export const EditWhatsNew = () => {
   };
 
 
-  // const handleInputChange = (event) => {
-  //   const { name, value, type } = event.target;
-
-  //   if (type === 'file') {  // Updated type value
-  //     setFormData({
-  //       ...formData,
-  //       [name]: event.target.files[0],
-  //     });
-  //   } else {
-  //     setFormData({
-  //       ...formData,
-  //       [name]: value,
-  //     });
-  //   }
-  // };
+  
 
   const handleInputChange = (event) => {
     const { name, value, type } = event.target;
+    
 
     // Store the previous content type
     setPrevContentType(formData.contenttype);
+    // if (name === 'contenttype' && formData.contenttype === 1) {
+    //   // Clear the related fields
+    //   setFormData({
+    //     ...formData,
+    //     external_file: '',
+    //     internal_link: '',
+    //     file: null,
+    //     // Clear other fields as needed
+    //   });
+    // }
 
     if (type === 'file') {
       setFormData({
@@ -187,45 +184,11 @@ export const EditWhatsNew = () => {
     setModalMessage('');
   };
 
-  // const handleSubmit = async () => {
-  //   if (validateForm()) {
-  //     try {
-  //       const formDataToSend = new FormData();
-  //       formDataToSend.append('news_tittle', formData.news_tittle);
-  //       formDataToSend.append('contenttype', formData.contenttype);
-
-  //       if (formData.contenttype === 4) {
-  //         formDataToSend.append('external_file', formData.external_file);
-  //       } else if (formData.contenttype === 3) {
-  //         formDataToSend.append('internal_file', formData.internal_file);
-  //       } else if (formData.contenttype ===2) {
-  //         formDataToSend.append('file', file);
-  //       } else if (formData.contenttype === 1) {
-  //         formDataToSend.append('html', html);  // Updated field name
-  //       }
-
-  //       formDataToSend.append('startdate', formData.startdate);
-  //       formDataToSend.append('end_date', formData.end_date);
-
-  //         const response = await apiClient.put(apis.getwhatsnewbyid + id, formData, {
-  //           headers: {
-  //             "Content-Type": "multipart/form-data",
-  //           },
-  //         });
-  //         console.log('Data updated:', response.data);
-  //         toast.success('Data updated successfully!');
-  //         openModal('Data updated successfully!');
-
-  //     } catch (error) {
-  //       console.error('Error saving/updating data:', error);
-  //     }
-  //   }
-  // };
   const handleSubmit = async () => {
     if (validateForm()) {
       try {
         const formDataToSend = new FormData();
-        formDataToSend.append('news_tittle', formData.news_tittle);
+        formDataToSend.append('news_title', formData.news_title);
         formDataToSend.append('contenttype', formData.contenttype);
 
         if (formData.contenttype === 4) {
@@ -293,11 +256,11 @@ export const EditWhatsNew = () => {
                     className="form-control"
                     type="text"
                     placeholder="Name"
-                    name="news_tittle"
-                    value={formData.news_tittle}
+                    name="news_title"
+                    value={formData.news_title}
                     onChange={handleInputChange}
                   />
-                  {errors.news_tittle && <div className="text-danger">{errors.news_tittle}</div>}
+                  {errors.news_title && <div className="text-danger">{errors.news_title}</div>}
                 </div>
 
                 <div className="mb-3">
@@ -311,10 +274,7 @@ export const EditWhatsNew = () => {
 
                   >
                     <option value="">Select a content type</option>
-                    {/* <option value={4}>External Link</option>
-              <option value={3}>Internal Link</option>
-              <option value={2}>File</option>
-              <option value={1}>HTML</option> */}
+                    
                     {optionsData.map((data) => (
                       <option key={data.id} value={data.id}>
                         {data.label}
@@ -325,7 +285,7 @@ export const EditWhatsNew = () => {
                 </div>
 
                 {/* Render fields based on contenttype */}
-                {formData.contenttype === 4 && (
+                {parseInt(formData.contenttype) === 4 && (
 
                   <div className="mb-3">
                     <label className="form-label text-dark">Enter External Link</label>
@@ -343,24 +303,29 @@ export const EditWhatsNew = () => {
                   </div>
                 )}
 
-                {formData.contenttype === 3 && (
+                {parseInt(formData.contenttype) === 3 && (
                   <div className="mb-3">
-                    <label className="form-label text-dark">Enter Internal Link</label>
-                    <input
-                      className="form-control"
-                      type="text"
-                      placeholder="Enter Internal Link"
-                      name="internal_file"
-                      value={formData.internal_file}
-                      onChange={handleInputChange}
-                    />
+                     <select
+                                  className='form-control'
+                                  name='internal_link'
+                                  value={formData.internal_link}
+                                  onChange={handleInputChange}
+                                  // isInvalid={!!formErrors.internal_link}
+                                >
+                                  <option value='' style={{color:"black"}}>Select a Menu Name</option>
+                                  {menudata.map((data) => (
+                                    <option key={data.u_id} value={"/menu/"+data.u_menu_url}>
+                                      {"Menu Name"+":-"+data.u_menu_name}
+                                    </option>
+                                  ))}
+                                </select>
                     {errors.internal_file && (
                       <div className="text-danger">{errors.internal_file}</div>
                     )}
                   </div>
                 )}
 
-                {formData.contenttype === 2 && (
+                {parseInt(formData.contenttype) === 2 && (
                   <div className="mb-3">
                     <label className="form-label text-dark">Choose File</label>
                     <input
@@ -376,17 +341,11 @@ export const EditWhatsNew = () => {
                   </div>
                 )}
 
-                {formData.contenttype === 1 && (
+                {parseInt(formData.contenttype) === 1 && (
                   <div className="mb-3">
                     <label className="form-label text-dark">HTML Editor</label>  {/* Updated label */}
                     <div>
-                      {/* <FroalaEditorComponent
-                        tag="textarea"
-                        config={config}
-                        model={html}
-                        value={formData.html}
-                        onModelChange={handleEditorChange}
-                      /> */}
+                     
                       <JoditEditor
                         value={formData.html}
                         config={config}
@@ -400,7 +359,7 @@ export const EditWhatsNew = () => {
                     )}
                   </div>
                 )}
-                <div className="mb-3">
+                {/* <div className="mb-3">
                   {formData.contenttype === "4" ? (
                     <>
                       <label className="form-label text-dark">Enter External Link</label>
@@ -447,13 +406,7 @@ export const EditWhatsNew = () => {
                     <>
                       <label className="form-label text-dark">HTML Editor</label>
                       <div>
-                        {/* <FroalaEditorComponent
-          tag="textarea"
-          config={config}
-          model={html}
-          value={formData.html}
-          onModelChange={handleEditorChange}
-        /> */}
+                       
                         <JoditEditor
                           value={formData.html}
                           config={config}
@@ -467,7 +420,7 @@ export const EditWhatsNew = () => {
                       )}
                     </>
                   ) : null}
-                </div>
+                </div> */}
 
                 <div className="mb-3">
                   <label className="form-label text-dark">Starting Date</label>
