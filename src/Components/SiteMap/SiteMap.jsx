@@ -11,30 +11,30 @@ const SiteMap = () => {
             <Sidebar />
             <main id="main" className="main">
                 <div className="pagetitle">
-                    <h1>Sitemap</h1>
+                    <h3>Sitemap</h3>
                     {/*<nav>*/}
                     {/*    <ol className="breadcrumb" style={{ textAlign: 'left' }}>*/}
                     {/*        <li className="breadcrumb-item"><Link to="/dashboard">Dashboard</Link></li>*/}
                     {/*    </ol>*/}
                     {/*</nav>*/}
                     <div style={{ textAlign: 'left' }}>
-                        <h2>Dashboard:</h2>
+                        <h1>Dashboard:</h1>
                         <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
                             <li><Link to="/dashboard">Dashboard</Link></li>
                         </ul>
-                        <h2>User Links:</h2>
+                        <h1>User Links:</h1>
                         <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
                             <li><Link to="/user">All User</Link></li>
                             <li><Link to="/user/createuser">Add New User</Link></li>
                         </ul>
-                        <h2>CMS Links:</h2>
+                        <h1>CMS Links:</h1>
                         <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
                             <li><Link to="/user/createuser">Create Home</Link></li>
                             <li><Link to="/cms/menu">Mean</Link></li>
                             <li><Link to="/cms/submenu">SubMenu</Link></li>
                             <li><Link to="/cms/allmenu">All Menu</Link></li>
                         </ul>
-                        <h2>Footer Links:</h2>
+                        <h1>Footer Links:</h1>
                         <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
                             <li><Link to="/footer/createfooterdisc">Create Footer Description</Link></li>
                             <li><Link to="/footer/createfooteraddress">Footer Address</Link></li>
@@ -42,18 +42,18 @@ const SiteMap = () => {
                             <li><Link to="/footer/createfooterdata">Footer Data</Link></li>
                             <li><Link to="/footer/footertable">All Footer</Link></li>
                         </ul>
-                        <h2>Services Links:</h2>
+                        <h1>Services Links:</h1>
                         <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
                             <li><Link to="/services/allwhatsnew">Create Latest Update</Link></li>
                             <li><Link to="/services/alltender">Create Tender</Link></li>
                             <li><Link to="/services/allreport">Create Report</Link></li>
                             <li><Link to="/services/alllink">Create Links</Link></li>
                         </ul>
-                        <h2>Banner:</h2>
+                        <h1>Banner:</h1>
                         <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
                             <li><Link to="/banner">Banner</Link></li>
                         </ul>
-                        <h2>Slider:</h2>
+                        <h1>Slider:</h1>
                         <ul style={{ listStyle: 'none', paddingLeft: '0' }}>
                             <li><Link to="/slider">Slider</Link></li>
                         </ul>
