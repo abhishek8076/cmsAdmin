@@ -114,11 +114,12 @@ export const EditFooterAddress = () => {
   return (
     <div className="container">
       <div className="row">
-      
+      <div class="card">
+              <div class="card-body">
       <h1 className="text-center">Office address</h1>
       </div>
       <div className="row justify-content-center">
-        <div className="col-md-6">
+        <div >
         <div className="mb-3">
                   <label className="form-label text-dark">Language Type</label>
                   <select
@@ -182,6 +183,8 @@ export const EditFooterAddress = () => {
           </div>
         </div>
       </div>
+    </div>
+    </div>
     </div>
   );
 };
