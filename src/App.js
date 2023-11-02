@@ -36,7 +36,11 @@ import ReportTable from './Components/Reports/ReportTable/ReportTable';
 import { EditReport } from './Components/Reports/EditReport/EditReport';
 import TenderTable from './Components/Tender/TenderTable/TenderTable';
 import { EditTender } from './Components/Tender/EditTender/EditTender';
+<<<<<<< HEAD
 import { ErrorPage } from './pages/Error/ErrorPage';
+=======
+import SiteMap from "./Components/SiteMap/SiteMap";
+>>>>>>> df30ded (Sitemap component added)
 
 export function App() {
   return (
@@ -46,6 +50,7 @@ export function App() {
           <Route path="/" element={<LoginForm />}/>
           <Route path='/banner' element={<Banner/>}/>
           <Route path='/slider' element={<Slider/>}/>
+            <Route path='/sitemap' element={<SiteMap/>}/>
             <Route path="/dashboard" element={<Homenew />}/>
          {/* user */}
           <Route path="/user">
