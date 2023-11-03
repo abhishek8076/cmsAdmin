@@ -169,10 +169,11 @@ const Sidebar = () => {
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
-          <i class="bi bi-question-circle"></i>
-          <span>F.A.Q</span>
-        </a>
+        <Link to='/sitemap
+        ' class="nav-link collapsed" >
+          <i class="bi bi-person"></i>
+          <span>Site Map</span>
+        </Link>
       </li>
 
       <li class="nav-item">
