@@ -29,8 +29,10 @@ export default function BannerTable() {
         { field: 1, headerName: "S.No", width: 50 },
         { field: "imgpath", headerName: "Image", 
           // Render the image using an <img> element
+          width: 100,
+          height:300,
           renderCell: (params) => (
-            <img src={params.row.imgpath} alt="Image" style={{ width: '100px' }} />
+            <img src={params.row.imgpath} alt="Image" style={{ width: '100%', height: '100%' }} />
           ),
         },
         { field: "u_content", headerName: "Content data" },

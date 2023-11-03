@@ -19,6 +19,7 @@ export const CreateUser=()=> {
   const [selectedRole, setSelectedRole] = useState('');
   const [formErrors, setFormErrors] = useState({});
   const [successDialogOpen, setSuccessDialogOpen] = useState(false);
+  const [getuser, setuser] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -47,18 +48,18 @@ export const CreateUser=()=> {
   const validateForm = () => {
     const errors = {};
 
-    if (!formData.name) {
+    if (!formData.name ) {
       errors.name = 'Please enter your name';
     } else if (!/^[A-Za-z ]+$/.test(formData.name)) {
       errors.name = 'Please input alphabet characters only';
     }
 
-    if (!formData.email) {
+    if (!formData.email ) {
       errors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       errors.email = `E-mail must include "@" character `;
     }
-
+   
     if (!formData.mobile_no) {
       errors.mobile_no = "Please enter your mobile number";
     } else if (!/^(\+91|\+91\-|0)?[789]\d{9}$/.test(formData.mobile_no)) {
@@ -139,6 +140,17 @@ export const CreateUser=()=> {
       try {
         const response = await apiClient.get(api.getUserType);
         setDropdownOptions(response.data);
+      } catch (error) {
+        console.error('Error fetching roles:', error);
+      }
+    };
+    fetchRoles();
+  }, []);
+  useEffect(() => {
+    const fetchRoles = async () => {
+      try {
+        const response = await apiClient.get(api.newuser);
+        setuser(response.data);
       } catch (error) {
         console.error('Error fetching roles:', error);
       }
